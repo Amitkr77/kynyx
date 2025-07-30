@@ -1,8 +1,7 @@
 import React from "react";
 
 import Hero from "./components/Hero";
-import Features from "./components/Features";
-import Services from "./components/Services";
+import ServiceSection from "./components/ServiceSection";
 import Approach from "./components/Approach";
 import PortfolioSection from "./components/PortfolioSection";
 import Testimonials from "./components/Testimonials";
@@ -11,9 +10,9 @@ import WhyChooseUs from "./components/WhyChooseUs";
 
 const Home = () => {
   return (
-    <div className="font-['Inter'] bg-[#0d0d1a] text-white overflow-x-hidden">
+    <div className=" bg-[#0d0d1a] text-white">
       <Hero />
-      <Services />
+      <ServiceSection />
       <Approach />
       <PortfolioSection />
       <Testimonials />

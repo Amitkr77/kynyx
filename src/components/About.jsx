@@ -1,199 +1,186 @@
-import React from "react";
+import React from 'react';
 
-// Replace with actual images and links if needed
-const teamMembers = [
-  {
-    name: "Jane Doe",
-    title: "CEO",
-    image:
-      "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
-  },
-  {
-    name: "John Smith",
-    title: "CTO",
-    image:
-      "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
-  },
-  {
-    name: "Alice Johnson",
-    title: "COO",
-    image:
-      "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
-  },
-  {
-    name: "Bob Brown",
-    title: "CFO",
-    image:
-      "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
-  },
-];
+const AboutUs = () => {
+  const teamMembers = [
+    {
+      name: 'Jane Doe',
+      title: 'CEO',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop',
+      alt: 'Headshot of Jane Doe, CEO of Kynyx Solutions'
+    },
+    {
+      name: 'John Smith',
+      title: 'CTO',
+      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop',
+      alt: 'Headshot of John Smith, CTO of Kynyx Solutions'
+    },
+    {
+      name: 'Alice Johnson',
+      title: 'COO',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d877c828f7?q=80&w=687&auto=format&fit=crop',
+      alt: 'Headshot of Alice Johnson, COO of Kynyx Solutions'
+    },
+    {
+      name: 'Bob Brown',
+      title: 'CFO',
+      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop',
+      alt: 'Headshot of Bob Brown, CFO of Kynyx Solutions'
+    }
+  ];
 
-const AboutUs = () => (
-  <main>
-    {/* About Us Hero Section */}
-    <section className="pt-32 pb-20 relative">
-      {/* Background Image Overlay */}
-      <div
-        className="absolute inset-0 bg-black opacity-40 z-0"
-        style={{
-          backgroundImage:
-            'url("https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
+  const values = [
+    {
+      title: 'Partnership',
+      description: 'We act as an extension of your team, fostering long-term success through collaboration.',
+      icon: (
+        <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      )
+    },
+    {
+      title: 'Quality',
+      description: 'We deliver exceptional craftsmanship, ensuring every project exceeds expectations.',
+      icon: (
+        <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    },
+    {
+      title: 'Transparency',
+      description: 'We communicate openly, keeping you informed at every step of the process.',
+      icon: (
+        <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+      )
+    }
+  ];
 
-      {/* Content */}
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <h1 className="font-poppins font-bold text-5xl md:text-6xl text-white leading-tight">
-          We're a Team of Thinkers, Builders, and Partners.
-        </h1>
-        <p className="font-inter text-lg text-brand-light-gray mt-6 max-w-3xl mx-auto">
-          Kynyx Solutions was founded on a simple idea: to build a digital
-          agency that's less about transactions and more about partnerships.
-          We're a US-based company dedicated to helping businesses navigate the
-          complexities of the digital world with a team they can trust.
-        </p>
-      </div>
-    </section>
-
-    {/* Our Story Section */}
-    <section className="py-20 bg-brand-charcoal">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2">
-            <img
-              src="./our-journey-image.png"
-              alt="An abstract graphic representing the journey of Kynyx Solutions"
-              className="rounded-lg shadow-2xl"
-            />
-          </div>
-          <div className="md:w-1/2">
-            <h2 className="font-poppins font-bold text-4xl text-white mb-4">
-              Our Story: From Idea to Impact
-            </h2>
-            <p className="text-brand-light-gray mb-4">
-              Founded in Delaware, Kynyx Solutions started as a small group of
-              passionate technologists who saw a gap in the market. Too many
-              businesses were struggling with digital agencies that
-              overpromised, underdelivered, and communicated poorly. We set out
-              to be different.
-            </p>
-            <p className="text-brand-light-gray">
-              Our focus has always been on combining deep technical expertise
-              with a human-centric approach. We believe the best digital
-              products are born from collaboration, clear communication, and a
-              genuine desire to solve real-world problems. Today, we're proud to
-              be a trusted partner for companies across the country, helping
-              them build the future of their business.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Meet the Team Section */}
-    <section className="py-20 bg-brand-charcoal-light">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="font-poppins font-bold text-4xl text-white">
-            Meet the Leadership
-          </h2>
-          <p className="font-inter text-lg text-brand-light-gray mt-4 max-w-2xl mx-auto">
-            The passionate individuals guiding our mission to deliver
-            excellence.
+  return (
+    <main className="bg-gray-900 font-inter text-white">
+      {/* Hero Section */}
+      <section className="pt-24 pb-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="font-poppins font-semibold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
+            Your Partners in Digital Innovation
+          </h1>
+          <p className="font-inter text-sm sm:text-base text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
+            Kynyx Solutions is a US-based digital agency focused on building meaningful partnerships to create impactful digital solutions.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map((member) => (
-            <div key={member.name} className="text-center">
-              <img
-                src={member.image}
-                alt={`Headshot of ${member.name}`}
-                className="w-40 h-40 rounded-full mx-auto mb-4 border-2 border-brand-purple"
-              />
-              <h3 className="font-poppins font-semibold text-xl text-white">
-                {member.name}
-              </h3>
-              <p className="text-brand-cyan">{member.title}</p>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="py-16 bg-gray-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center gap-6 lg:gap-8">
+            <div className="md:w-1/2 order-2 md:order-1">
+              <h2 className="font-poppins font-semibold text-2xl sm:text-3xl text-white mb-4">
+                Our Story
+              </h2>
+              <p className="font-inter text-sm sm:text-base text-gray-400 leading-relaxed">
+                Founded in Delaware, Kynyx Solutions was born from a vision to redefine digital partnerships. Frustrated by agencies that prioritized profit over people, we set out to create a company that values collaboration, transparency, and quality. Today, we empower businesses nationwide with innovative solutions tailored to their goals.
+              </p>
             </div>
-          ))}
+            <div className="md:w-1/2 order-1 md:order-2">
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1170&auto=format&fit=crop"
+                alt="Team collaborating on a project, representing Kynyx Solutions' journey"
+                className="rounded-lg shadow-lg w-full h-48 sm:h-64 object-cover"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-    {/* Our Values Section */}
-    <section className="py-20 bg-gradient-to-r from-brand-charcoal to-brand-charcoal-light">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="font-poppins font-bold text-4xl md:text-5xl text-white leading-tight">
-            Our Core Values
+      </section>
+
+      {/* Meet the Team Section */}
+      <section className="py-16 bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="font-poppins font-semibold text-2xl sm:text-3xl text-white">
+              Our Leadership
+            </h2>
+            <p className="font-inter text-sm sm:text-base text-gray-400 mt-3 max-w-xl mx-auto leading-relaxed">
+              Meet the team driving our mission forward.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.map((member, index) => (
+              <div
+                key={member.name}
+                className="text-center group transform transition-all duration-300 hover:-translate-y-1"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <img
+                  src={member.image}
+                  alt={member.alt}
+                  className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-3 border-2 border-gray-700 group-hover:border-gray-500 transition-colors duration-300 object-cover"
+                />
+                <h3 className="font-poppins font-medium text-base sm:text-lg text-white">
+                  {member.name}
+                </h3>
+                <p className="font-inter text-sm text-gray-400">{member.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values Section */}
+      <section className="py-16 bg-gray-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="font-poppins font-semibold text-2xl sm:text-3xl text-white">
+              Our Values
+            </h2>
+            <p className="font-inter text-sm sm:text-base text-gray-400 mt-3 max-w-xl mx-auto leading-relaxed">
+              The principles that define how we work.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {values.map((value, index) => (
+              <div
+                key={value.title}
+                className="bg-gray-900 p-6 rounded-lg shadow-md group transform hover:-translate-y-1 transition-all duration-300"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex justify-center mb-4">{value.icon}</div>
+                <h3 className="font-poppins font-medium text-base sm:text-lg text-white text-center mb-2">
+                  {value.title}
+                </h3>
+                <p className="font-inter text-sm text-gray-400 text-center leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Join Our Team Section */}
+      <section className="py-16 bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-poppins font-semibold text-2xl sm:text-3xl text-white">
+            Join Us
           </h2>
-          <p className="font-inter text-lg text-brand-light-gray mt-4 max-w-2xl mx-auto">
-            These principles guide every decision we make and every line of code
-            we write.
+          <p className="font-inter text-sm sm:text-base text-gray-400 mt-3 max-w-xl mx-auto leading-relaxed">
+            We’re seeking passionate individuals to join our mission of building innovative digital solutions. Be part of our growing team.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Value Card */}
-          <div className="border bg-gray-400/40 p-8 rounded-lg text-center shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out transform hover:scale-105 ">
-            <h3 className="font-poppins font-semibold text-xl md:text-2xl text-white mb-4">
-              Partnership Over Projects
-            </h3>
-            <p className="text-brand-light-gray text-base">
-              We invest in your success for the long term. We act as an
-              extension of your team, not just a temporary vendor.
-            </p>
-          </div>
-
-          {/* Value Card */}
-          <div className="border bg-teal-400/40 p-8 rounded-lg text-center shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out transform hover:scale-105">
-            <h3 className="font-poppins font-semibold text-xl md:text-2xl text-white mb-4">
-              Uncompromising Quality
-            </h3>
-            <p className="text-brand-light-gray text-base">
-              We're obsessed with quality and craftsmanship. Good enough is
-              never good enough for us or our clients.
-            </p>
-          </div>
-
-          {/* Value Card */}
-          <div className="border bg-blue-400/40 p-8 rounded-lg text-center shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out transform hover:scale-105">
-            <h3 className="font-poppins font-semibold text-xl md:text-2xl text-white mb-4">
-              Radical Transparency
-            </h3>
-            <p className="text-brand-light-gray text-base">
-              We believe in clear, honest communication. You'll always know the
-              status of your project and the 'why' behind our decisions.
-            </p>
+          <div className="mt-6">
+            <a
+              href="#careers"
+              className="inline-block bg-gray-200 text-gray-900 font-poppins font-medium py-2 px-6 rounded-full hover:bg-gray-300 transition-colors duration-200 text-sm sm:text-base"
+            >
+              View Open Positions
+            </a>
           </div>
         </div>
-      </div>
-    </section>
-
-    {/* Join Our Team Section */}
-    <section className="py-20 bg-gradient-to-r from-brand-cyan to-brand-cyan-light">
-      <div className="container mx-auto px-6 text-center">
-        <h2 className="font-poppins font-bold text-4xl md:text-5xl text-white leading-tight">
-          Join Our Team
-        </h2>
-        <p className="font-inter text-lg text-brand-light-gray mt-4 max-w-2xl mx-auto">
-          We're always looking for passionate and talented people to join our
-          mission. If you love building great things and want to be part of a
-          growing US-based software development team, we'd love to hear from
-          you.
-        </p>
-        <div className="mt-8">
-          <a
-            href="#"
-            className="border text-brand-cyan font-bold font-poppins py-4 px-10 rounded-lg shadow-lg bg-cyan-800 hover:bg-cyan-500 hover:shadow-xl transition-all duration-300 ease-in-out text-lg"
-          >
-            View Open Positions
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-);
+      </section>
+    </main>
+  );
+};
 
 export default AboutUs;
