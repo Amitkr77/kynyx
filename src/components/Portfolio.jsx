@@ -9,7 +9,7 @@ const Portfolio = () => {
       title: 'Aura Finance',
       description: 'A secure mobile banking app that increased user engagement by 150%.',
       tags: ['app-development', 'ui-ux-design'],
-      imageUrl: 'src/assets/AuraFinance.jpg',
+      imageUrl: '../assets/AuraFinance.jpg',
       altText: 'Screenshot of the Aura Finance mobile app',
       color: 'from-cyan-500 to-teal-400'
     },
