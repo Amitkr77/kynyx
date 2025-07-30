@@ -8,9 +8,9 @@ const Navbar = () => {
 
   return (
     <header className="bg-[#030303] text-white px-6 lg:px-10 py-4">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center relative">
         {/* Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 z-10">
           <img
             src={logo}
             alt="Kynyx Logo"
@@ -18,43 +18,63 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Desktop Nav (only visible on lg and above) */}
-        <nav className="hidden lg:flex gap-6 items-center">
-          <Link
-            to="/"
-            className="relative text-gray-300 font-medium after:content-[''] after:absolute after:h-0.5 after:bg-cyan-300 after:w-full after:left-0 after:-bottom-1 text-xl"
-          >
-            Home
-          </Link>
-          <Link to="/portfolio" className="text-gray-300 font-medium text-xl">
-            Portfolio
-          </Link>
-          <Link to="/about" className="text-gray-300 font-medium text-xl">
-            About Us
-          </Link>
-          <Link to="/contact" className="text-gray-300 font-medium text-xl">
-            Contact
-          </Link>
-          <Link to="/services2" className="text-gray-300 font-medium text-xl">
-            Services
-          </Link>
+        {/* Centered Nav */}
+        <nav className="hidden lg:flex flex-1 justify-center gap-8 items-center">
+  <nav className="hidden lg:flex flex-1 justify-center gap-8 items-center">
+  <Link
+    to="/"
+    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+  >
+    Home
+  </Link>
+  <Link
+    to="/services2"
+    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+  >
+    Services
+  </Link>
+  <Link
+    to="/portfolio"
+    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+  >
+    Portfolio
+  </Link>
+  <Link
+    to="/about"
+    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+  >
+    Why Us
+  </Link>
+  <Link
+    to="/contact"
+    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+  >
+    Contact
+  </Link>
+</nav>
+
+</nav>
+
+
+        {/* Right-side Button */}
+        <div className="hidden lg:block z-10">
           <Link to="/learn-more">
             <button className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold">
-              Learn More
+              Get a Quote
             </button>
           </Link>
-        </nav>
+        </div>
 
         {/* Hamburger menu button for mobile */}
         <button
-          className="lg:hidden text-gray-300 focus:outline-none"
+          className="lg:hidden text-gray-300 focus:outline-none z-20"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* Mobile Nav (visible below lg) */}
+      {/* Mobile Nav */}
       {isOpen && (
         <div className="flex flex-col gap-4 mt-4 lg:hidden">
           <Link
@@ -65,7 +85,14 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            to="/Portfolio"
+            to="/services2"
+            className="text-gray-300 font-medium text-lg"
+            onClick={() => setIsOpen(false)}
+          >
+            Services
+          </Link>
+          <Link
+            to="/portfolio"
             className="text-gray-300 font-medium text-lg"
             onClick={() => setIsOpen(false)}
           >
@@ -76,7 +103,7 @@ const Navbar = () => {
             className="text-gray-300 font-medium text-lg"
             onClick={() => setIsOpen(false)}
           >
-            About Us
+            Why Us
           </Link>
           <Link
             to="/contact"
@@ -85,16 +112,9 @@ const Navbar = () => {
           >
             Contact
           </Link>
-          <Link
-            to="/services2"
-            className="text-gray-300 font-medium text-lg"
-            onClick={() => setIsOpen(false)}
-          >
-            Services
-          </Link>
           <Link to="/learn-more" onClick={() => setIsOpen(false)}>
             <button className="w-full text-center py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold">
-              Learn More
+              Get a Quote
             </button>
           </Link>
         </div>
