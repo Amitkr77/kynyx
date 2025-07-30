@@ -1,4 +1,5 @@
 import logo from "../assets/logo8.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const navLinks = [
@@ -6,8 +7,9 @@ const Footer = () => {
     { name: "Career", href: "/career" },
     { name: "Contact", href: "#contact" },
     { name: "Portfolio", href: "#portfolio" },
-    { name: "Privacy Policy", href: "#privacy" },
-    { name: "Terms of Service", href: "#terms" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Terms of Service", href: "/terms-of-service" },
+    { name: "Return Refund Policy", href: "/return-refund-policy" },
   ];
 
   const socialLinks = [
@@ -71,13 +73,13 @@ const Footer = () => {
             </h4>
             <div className="flex flex-col items-center gap-3 md:items-start">
               {navLinks.map((link, index) => (
-                <a
+                <Link
                   key={index}
-                  href={link.href}
+                  to={link.href}
                   className="text-gray-300 hover:text-cyan-500 transition-colors duration-300 text-lg"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>

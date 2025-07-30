@@ -10,6 +10,9 @@ import Portfolio from "./components/Portfolio";
 import About from "./components/About";
 import LearnMore from "./components/LearnMore";
 import Footer from "./components/Footer";
+import PrivacyPolicy from "./components/Privacypolicy";
+import TermsOfService from "./components/TermsofService";
+import ReturnrefundPolicy from "./components/ReturnrefundPolicy";
 import Career from "./components/Career";
 
 
@@ -43,6 +46,9 @@ const App = () => {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+        <Route path="/terms-of-service" element={<TermsOfService/>} />
+        <Route path="/return-refund-policy" element={<ReturnrefundPolicy/>} />
         <Route path="/career" element={<Career />} />
         
         <Route path="/Learn-More" element={<LearnMore />} />

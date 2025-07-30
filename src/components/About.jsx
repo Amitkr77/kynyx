@@ -17,7 +17,7 @@ const AboutUs = () => {
     {
       name: 'Alice Johnson',
       title: 'COO',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d877c828f7?q=80&w=687&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop',
       alt: 'Headshot of Alice Johnson, COO of Kynyx Solutions'
     },
     {
