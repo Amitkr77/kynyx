@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import PrivacyPolicy from "./components/Privacypolicy";
 import TermsOfService from "./components/TermsofService";
 import ReturnrefundPolicy from "./components/ReturnrefundPolicy";
+import Career from "./components/Career";
 
 
 const NotFound = () => (
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
         <Route path="/terms-of-service" element={<TermsOfService/>} />
         <Route path="/return-refund-policy" element={<ReturnrefundPolicy/>} />
+        <Route path="/career" element={<Career />} />
         
         <Route path="/Learn-More" element={<LearnMore />} />
       </Routes>
