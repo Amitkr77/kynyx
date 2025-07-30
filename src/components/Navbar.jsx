@@ -26,8 +26,8 @@ const Navbar = () => {
           >
             Home
           </Link>
-          <Link to="/solutions" className="text-gray-300 font-medium text-xl">
-            Solutions
+          <Link to="/portfolio" className="text-gray-300 font-medium text-xl">
+            Portfolio
           </Link>
           <Link to="/about" className="text-gray-300 font-medium text-xl">
             About Us

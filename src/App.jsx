@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+
 import Home from "./Home";
 import Services2 from"./components/Services2";
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
-import Solutions from "./components/Solutions";
+import Portfolio from "./components/Portfolio";
 import About from "./components/About";
 import LearnMore from "./components/LearnMore";
 import Footer from "./components/Footer";
@@ -36,7 +37,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/solutions" element={<Solutions />} />
+        {/* <Route path="/solutions" element={<Solutions />} /> */}
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/Services2" element={<Services2 />} />
