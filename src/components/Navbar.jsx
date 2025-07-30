@@ -20,41 +20,39 @@ const Navbar = () => {
 
         {/* Centered Nav */}
         <nav className="hidden lg:flex flex-1 justify-center gap-8 items-center">
-  <nav className="hidden lg:flex flex-1 justify-center gap-8 items-center">
-  <Link
-    to="/"
-    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
-  >
-    Home
-  </Link>
-  <Link
-    to="/services"
-    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
-  >
-    Services
-  </Link>
-  <Link
-    to="/portfolio"
-    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
-  >
-    Portfolio
-  </Link>
-  <Link
-    to="/about"
-    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
-  >
-    About
-  </Link>
-  <Link
-    to="/contact"
-    className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
-  >
-    Contact
-  </Link>
-</nav>
-
-</nav>
-
+          <nav className="hidden lg:flex flex-1 justify-center gap-8 items-center">
+            <Link
+              to="/"
+              className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+            >
+              Home
+            </Link>
+            <Link
+              to="/services"
+              className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+            >
+              Services
+            </Link>
+            <Link
+              to="/portfolio"
+              className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+            >
+              Portfolio
+            </Link>
+            <Link
+              to="/about"
+              className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+            >
+              About
+            </Link>
+            <Link
+              to="/contact"
+              className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
+            >
+              Contact
+            </Link>
+          </nav>
+        </nav>
 
         {/* Right-side Button */}
         <div className="hidden lg:block z-10">
