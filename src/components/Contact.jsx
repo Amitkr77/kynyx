@@ -10,7 +10,7 @@ const Contact = () => {
           <div className="mb-8">
             <h2 className="text-3xl font-bold mb-4">Let’s Connect</h2>
             <p className="text-gray-400">
-              Get in touch sit doait deuprdrug cane sepecctnd arpuighan dus noe ined you connier.
+              Get in touch with kynyx.
             </p>
           </div>
 
