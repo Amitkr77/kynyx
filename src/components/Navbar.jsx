@@ -28,7 +28,7 @@ const Navbar = () => {
     Home
   </Link>
   <Link
-    to="/services2"
+    to="/services"
     className="relative text-gray-300 font-medium text-xl transition transform duration-200 hover:scale-110 active:scale-95 hover:text-cyan-300 active:text-pink-400"
   >
     Services

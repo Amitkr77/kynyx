@@ -5,8 +5,8 @@ const Footer = () => {
     { name: "About Us", href: "#about" },
     { name: "Contact", href: "#contact" },
     { name: "Portfolio", href: "#portfolio" },
-    { name: "Privacy Policy", href: "#privacy" },
-    { name: "Terms of Service", href: "#terms" },
+    { name: "Privacy Policy", href: "/PrivacyPolicy" },
+    { name: "Terms of Service", href: "/TermsofService" },
   ];
 
   const socialLinks = [
