@@ -12,6 +12,7 @@ import LearnMore from "./components/LearnMore";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./components/Privacypolicy";
 import TermsOfService from "./components/TermsofService";
+import ReturnrefundPolicy from "./components/ReturnrefundPolicy";
 
 
 const NotFound = () => (
@@ -46,6 +47,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
         <Route path="/terms-of-service" element={<TermsOfService/>} />
+        <Route path="/return-refund-policy" element={<ReturnrefundPolicy/>} />
         
         <Route path="/Learn-More" element={<LearnMore />} />
       </Routes>

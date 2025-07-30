@@ -8,6 +8,7 @@ const Footer = () => {
     { name: "Portfolio", href: "#portfolio" },
     { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Terms of Service", href: "/terms-of-service" },
+    { name: "Return Refund Policy", href: "/return-refund-policy" },
   ];
 
   const socialLinks = [

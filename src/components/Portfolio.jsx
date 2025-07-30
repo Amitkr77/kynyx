@@ -9,7 +9,7 @@ const Portfolio = () => {
       title: 'Aura Finance',
       description: 'A secure mobile banking app that increased user engagement by 150%.',
       tags: ['app-development', 'ui-ux-design'],
-      imageUrl: 'https://images.unsplash.com/photo-1649181892259-8f3b4e0b23e7?q=80&w=1170&auto=format&fit=crop',
+      imageUrl: 'src/assets/AuraFinance.jpg',
       altText: 'Screenshot of the Aura Finance mobile app',
       color: 'from-cyan-500 to-teal-400'
     },
@@ -18,7 +18,7 @@ const Portfolio = () => {
       title: 'Nexus Commerce',
       description: 'A custom B2B e-commerce platform that boosted online sales by 80%.',
       tags: ['web-development'],
-      imageUrl: 'https://images.unsplash.com/photo-1556740738-6b4a6d8b4b9b?q=80&w=1170&auto=format&fit=crop',
+      imageUrl: 'src/assets/Nexuscommerce.jpg',
       altText: 'Homepage of the Nexus Commerce website',
       color: 'from-purple-600 to-indigo-500'
     },
@@ -27,7 +27,7 @@ const Portfolio = () => {
       title: 'ConnectSphere',
       description: 'A SaaS platform for team collaboration that acquired 10,000 users in its first six months.',
       tags: ['web-development', 'ui-ux-design'],
-      imageUrl: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1170&auto=format&fit=crop',
+      imageUrl: 'src/assets/Gemini_Generated_Image_srnogqsrnogqsrno (1).jpg',
       altText: 'Dashboard of the ConnectSphere SaaS platform',
       color: 'from-amber-400 to-yellow-500'
     },
@@ -36,7 +36,7 @@ const Portfolio = () => {
       title: 'HealthTrack',
       description: 'A wearable companion app for tracking fitness and health metrics.',
       tags: ['app-development'],
-      imageUrl: 'https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?q=80&w=1170&auto=format&fit=crop',
+      imageUrl: 'src/assets/Healthtrack.jpg',
       altText: 'HealthTrack app displayed on a smartphone',
       color: 'from-green-500 to-emerald-400'
     },
@@ -45,7 +45,7 @@ const Portfolio = () => {
       title: 'Market Insights',
       description: 'A data-driven marketing campaign that increased lead generation by 200%.',
       tags: ['digital-marketing'],
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-b1f3a0c3f3b0?q=80&w=1170&auto=format&fit=crop',
+      imageUrl: 'src/assets/Marketinsights.jpg',
       altText: 'Analytics dashboard showing marketing campaign results',
       color: 'from-pink-500 to-rose-400'
     },
@@ -54,7 +54,7 @@ const Portfolio = () => {
       title: 'Artisan Collective',
       description: 'A beautiful branding and website project for a collective of local artists.',
       tags: ['web-development', 'ui-ux-design'],
-      imageUrl: 'https://images.unsplash.com/photo-1516321310762-4794371e6a6f?q=80&w=1170&auto=format&fit=crop',
+      imageUrl: 'src/assets/Artisian.jpg',
       altText: 'The Artisan Collective website homepage',
       color: 'from-violet-500 to-fuchsia-400'
     }
