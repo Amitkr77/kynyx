@@ -2,65 +2,65 @@ import React from 'react';
 
 const services = [
   {
-    img: "/images/digital-service.png",
-    title: "A Full Suite of Digital Services",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    button: "Cloud Essasy",
+    icon: (
+      <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+    title: "Custom Web Development",
+    description: "We build fast, secure, and scalable websites and web applications that are tailored to your specific business goals.",
   },
   {
-    img: "/images/user-avatar.png",
-    title: "Ander Corpotions",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    button: "Create Essasy",
+    icon: (
+      <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+      </svg>
+    ),
+    title: "Mobile App Development",
+    description: "Capture your audience with beautiful and intuitive native iOS and Android applications that provide a seamless user experience.",
   },
   {
-    img: "/images/user-avatar.png",
-    title: "Ander Corpotions",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    button: "Corporations",
-  },
-  {
-    img: "/images/user-avatar.png",
-    title: "Ander Corpotions",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    button: "Corporations",
-  },
-  {
-    img: "/images/user-avatar.png",
-    title: "Ander Corpotions",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    button: "Corporations",
-  },
-  {
-    img: "/images/user-avatar.png",
-    title: "Ander Corpotions",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
-    button: "Corporations",
+    icon: (
+      <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+      </svg>
+    ),
+    title: "Digital Marketing Strategy",
+    description: "Amplify your brand's voice with data-driven strategies. We specialize in SEO, content marketing, and paid advertising campaigns.",
   },
 ];
 
 const Services = () => {
   return (
-    <section className="bg-[#0f0f1a] text-white py-16 px-5 animate-fadeInUp">
-      <h2 className="text-3xl font-semibold mb-10 pl-2">Services</h2>
-      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-[#1c1c2b] rounded-2xl p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-1"
-          >
-            <img
-              src={service.img}
-              alt={service.title}
-              className="w-40 mb-4"
-            />
-            <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-            <p className="text-sm text-gray-300 mb-4">{service.description}</p>
-            <button className="bg-gradient-to-r from-[#6c63ff] to-[#60c5ea] text-white py-2 px-6 rounded-full text-sm font-medium hover:opacity-90 transition">
-              {service.button}
-            </button>
-          </div>
-        ))}
+    <section id="next-section" className="bg-gray-900 py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-poppins font-bold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
+            Our Services
+          </h2>
+          <p className="font-inter text-base sm:text-lg text-gray-400 mt-4 max-w-2xl mx-auto leading-relaxed">
+            A complete suite of digital solutions designed to build, launch, and grow your business.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-gray-800 p-6 sm:p-8 rounded-xl border border-gray-700 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/20"
+            >
+              <div className="bg-cyan-500/10 p-3 rounded-md w-12 h-12 mb-4 flex items-center justify-center">
+                {service.icon}
+              </div>
+              <h3 className="font-poppins font-semibold text-lg sm:text-xl text-white mb-2">
+                {service.title}
+              </h3>
+              <p className="font-inter text-sm sm:text-base text-gray-400 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
