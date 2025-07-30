@@ -10,6 +10,7 @@ import Portfolio from "./components/Portfolio";
 import About from "./components/About";
 import LearnMore from "./components/LearnMore";
 import Footer from "./components/Footer";
+import Career from "./components/Career";
 
 
 const NotFound = () => (
@@ -42,7 +43,7 @@ const App = () => {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        
+        <Route path="/career" element={<Career />} />
         
         <Route path="/Learn-More" element={<LearnMore />} />
       </Routes>

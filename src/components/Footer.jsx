@@ -3,6 +3,7 @@ import logo from "../assets/logo8.png";
 const Footer = () => {
   const navLinks = [
     { name: "About Us", href: "#about" },
+    { name: "Career", href: "/career" },
     { name: "Contact", href: "#contact" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Privacy Policy", href: "#privacy" },
