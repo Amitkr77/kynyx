@@ -9,7 +9,7 @@ const Portfolio = () => {
       title: 'Aura Finance',
       description: 'A secure mobile banking app that increased user engagement by 150%.',
       tags: ['app-development', 'ui-ux-design'],
-      imageUrl: '../assets/AuraFinance.jpg',
+      imageUrl: '../AuraFinance.jpg',
       altText: 'Screenshot of the Aura Finance mobile app',
       color: 'from-cyan-500 to-teal-400'
     },
@@ -18,7 +18,7 @@ const Portfolio = () => {
       title: 'Nexus Commerce',
       description: 'A custom B2B e-commerce platform that boosted online sales by 80%.',
       tags: ['web-development'],
-      imageUrl: 'src/assets/Nexuscommerce.jpg',
+      imageUrl: '../Nexuscommerce.jpg',
       altText: 'Homepage of the Nexus Commerce website',
       color: 'from-purple-600 to-indigo-500'
     },
@@ -27,7 +27,7 @@ const Portfolio = () => {
       title: 'ConnectSphere',
       description: 'A SaaS platform for team collaboration that acquired 10,000 users in its first six months.',
       tags: ['web-development', 'ui-ux-design'],
-      imageUrl: 'src/assets/Gemini_Generated_Image_srnogqsrnogqsrno (1).jpg',
+      imageUrl: '../ConnectSphere.jpg',
       altText: 'Dashboard of the ConnectSphere SaaS platform',
       color: 'from-amber-400 to-yellow-500'
     },
@@ -36,7 +36,7 @@ const Portfolio = () => {
       title: 'HealthTrack',
       description: 'A wearable companion app for tracking fitness and health metrics.',
       tags: ['app-development'],
-      imageUrl: 'src/assets/Healthtrack.jpg',
+      imageUrl: '../Healthtrack.jpg',
       altText: 'HealthTrack app displayed on a smartphone',
       color: 'from-green-500 to-emerald-400'
     },
@@ -45,8 +45,8 @@ const Portfolio = () => {
       title: 'Market Insights',
       description: 'A data-driven marketing campaign that increased lead generation by 200%.',
       tags: ['digital-marketing'],
-      imageUrl: 'src/assets/Marketinsights.jpg',
-      altText: 'Analytics dashboard showing marketing campaign results',
+      imageUrl: '../Marketinsights.jpg',
+      altText: 'MarketInsight',
       color: 'from-pink-500 to-rose-400'
     },
     {
@@ -54,7 +54,7 @@ const Portfolio = () => {
       title: 'Artisan Collective',
       description: 'A beautiful branding and website project for a collective of local artists.',
       tags: ['web-development', 'ui-ux-design'],
-      imageUrl: 'src/assets/Artisian.jpg',
+      imageUrl: '../Artisian.jpg',
       altText: 'The Artisan Collective website homepage',
       color: 'from-violet-500 to-fuchsia-400'
     }
