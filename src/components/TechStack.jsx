@@ -8,6 +8,7 @@ const TechStack = () => {
     { name: 'Python', color: 'bg-blue-600' },
     { name: 'Shopify', color: 'bg-lime-500' },
     { name: 'AWS', color: 'bg-orange-500' },
+    { name: 'Java', color: 'bg-pink-500' },
     { name: 'iOS (Swift)', color: 'bg-purple-500' },
     { name: 'Android (Kotlin)', color: 'bg-red-500' }
   ];
