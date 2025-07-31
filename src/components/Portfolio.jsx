@@ -9,7 +9,7 @@ const Portfolio = () => {
       title: 'Aura Finance',
       description: 'A secure mobile banking app that increased user engagement by 150%.',
       tags: ['app-development', 'ui-ux-design'],
-      imageUrl: '../assets/AuraFinance.jpg',
+      imageUrl: '/src/assets/AuraFinance.jpg',
       altText: 'Screenshot of the Aura Finance mobile app',
       color: 'from-cyan-500 to-teal-400'
     },
@@ -54,7 +54,7 @@ const Portfolio = () => {
       title: 'Artisan Collective',
       description: 'A beautiful branding and website project for a collective of local artists.',
       tags: ['web-development', 'ui-ux-design'],
-      imageUrl: 'src/assets/Artisian.jpg',
+      imageUrl: '../Artisian.jpg',
       altText: 'The Artisan Collective website homepage',
       color: 'from-violet-500 to-fuchsia-400'
     }
