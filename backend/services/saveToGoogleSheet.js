@@ -1,0 +1,86 @@
+const { google } = require("googleapis");
+const credentials = require("../config/google-credentials.json");
+
+const auth = new google.auth.GoogleAuth({
+  credentials,
+  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+});
+
+const saveToGoogleSheet = async ({ name, email, service, message }) => {
+  const client = await auth.getClient();
+  const sheets = google.sheets({ version: "v4", auth: client });
+
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const sheetName = "Submissions";
+
+  // Check if headers are present
+  const readRes = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${sheetName}!A1:E1`,
+  });
+
+  const isEmpty = !readRes.data.values || readRes.data.values.length === 0;
+
+  // If empty, insert column headers
+  if (isEmpty) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${sheetName}!A1:E1`,
+      valueInputOption: "RAW",
+      resource: {
+        values: [["NAME", "EMAIL", "SERVICE OPTED", "DESCRPTION", "DATE"]],
+      },
+    });
+
+    // Apply bold formatting to header row
+    const sheetMeta = await sheets.spreadsheets.get({ spreadsheetId });
+    const sheetId = sheetMeta.data.sheets.find(s => s.properties.title === sheetName)?.properties.sheetId;
+
+    if (sheetId !== undefined) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        resource: {
+          requests: [
+            {
+              repeatCell: {
+                range: {
+                  sheetId,
+                  startRowIndex: 0,
+                  endRowIndex: 1,
+                  startColumnIndex: 0,
+                  endColumnIndex: 5,
+                },
+                cell: {
+                  userEnteredFormat: {
+                    textFormat: {
+                      bold: true,
+                    },
+                    backgroundColor: {
+                      red: 0.88,
+                      green: 0.63,
+                      blue: 0.02,
+                    },
+                  },
+                },
+                fields: "userEnteredFormat.textFormat.bold",
+              },
+            },
+          ],
+        },
+      });
+    }
+  }
+
+  // Append new row
+  const now = new Date().toLocaleString();
+  await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range: `${sheetName}!A:E`,
+    valueInputOption: "RAW",
+    resource: {
+      values: [[name, email, service, message, now]],
+    },
+  });
+};
+
+module.exports = saveToGoogleSheet;
