@@ -1,14 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+
 import Home from "./Home";
-import Services2 from"./components/Services2";
+import Services from"./components/Services";
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
-import Solutions from "./components/Solutions";
+import Portfolio from "./components/Portfolio";
 import About from "./components/About";
-import LearnMore from "./components/LearnMore";
+
+import Getquote from "./components/Getquote";
 import Footer from "./components/Footer";
+import PrivacyPolicy from "./components/Privacypolicy";
+import TermsOfService from "./components/TermsofService";
+import ReturnrefundPolicy from "./components/ReturnrefundPolicy";
+import Career from "./components/Career";
 
 
 const NotFound = () => (
@@ -36,11 +42,18 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/solutions" element={<Solutions />} />
+        {/* <Route path="/solutions" element={<Solutions />} /> */}
+        <Route path="/Services" element={<Services />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/Services2" element={<Services2 />} />
-        <Route path="/Learn-More" element={<LearnMore />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+        <Route path="/terms-of-service" element={<TermsOfService/>} />
+        <Route path="/return-refund-policy" element={<ReturnrefundPolicy/>} />
+        <Route path="/career" element={<Career />} />
+        
+        
+        <Route path="/get-quote" element={<Getquote />} />
       </Routes>
       <Footer/>
     </div>
