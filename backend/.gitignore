@@ -5,6 +5,9 @@ node_modules/
 .env
 .env.*  # For .env.dev, .env.prod, etc.
 
+#Google-spreadsheet credentials
+config/google-credentials.json
+
 # Logs
 logs/
 *.log
