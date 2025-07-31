@@ -3,27 +3,27 @@ import React from 'react';
 const AboutUs = () => {
   const teamMembers = [
     {
-      name: 'Jane Doe',
-      title: 'CEO',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop',
-      alt: 'Headshot of Jane Doe, CEO of Kynyx Solutions'
+      name: 'Vishwjeet Narayanan',
+      title: 'Founder',
+      image: '../Founder.jpg',
+      alt: 'CEO of Kynyx Solutions'
     },
     {
-      name: 'John Smith',
-      title: 'CTO',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop',
+      name: 'Nitish Kumar',
+      title: 'Marketing Executive',
+      image: '../Nitesh.png',
       alt: 'Headshot of John Smith, CTO of Kynyx Solutions'
     },
     {
-      name: 'Alice Johnson',
-      title: 'COO',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop',
+      name: 'Aditya kumar',
+      title: 'Social Media Manager',
+      image: '../Aditya.jpeg',
       alt: 'Headshot of Alice Johnson, COO of Kynyx Solutions'
     },
     {
-      name: 'Bob Brown',
-      title: 'CFO',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=687&auto=format&fit=crop',
+      name: 'Hrithik Kumar',
+      title: 'Developer',
+      image: '../Developer.jpg',
       alt: 'Headshot of Bob Brown, CFO of Kynyx Solutions'
     }
   ];
