@@ -18,7 +18,7 @@ const Portfolio = () => {
       title: 'Nexus Commerce',
       description: 'A custom B2B e-commerce platform that boosted online sales by 80%.',
       tags: ['web-development'],
-      imageUrl: 'src/assets/Nexuscommerce.jpg',
+      imageUrl: '../Nexuscommerce.jpg',
       altText: 'Homepage of the Nexus Commerce website',
       color: 'from-purple-600 to-indigo-500'
     },
@@ -27,7 +27,7 @@ const Portfolio = () => {
       title: 'ConnectSphere',
       description: 'A SaaS platform for team collaboration that acquired 10,000 users in its first six months.',
       tags: ['web-development', 'ui-ux-design'],
-      imageUrl: 'src/assets/Gemini_Generated_Image_srnogqsrnogqsrno (1).jpg',
+      imageUrl: '../ConnectSphere.jpg',
       altText: 'Dashboard of the ConnectSphere SaaS platform',
       color: 'from-amber-400 to-yellow-500'
     },
@@ -36,7 +36,7 @@ const Portfolio = () => {
       title: 'HealthTrack',
       description: 'A wearable companion app for tracking fitness and health metrics.',
       tags: ['app-development'],
-      imageUrl: 'src/assets/Healthtrack.jpg',
+      imageUrl: '../Healthtrack.jpg',
       altText: 'HealthTrack app displayed on a smartphone',
       color: 'from-green-500 to-emerald-400'
     },
@@ -46,7 +46,7 @@ const Portfolio = () => {
       description: 'A data-driven marketing campaign that increased lead generation by 200%.',
       tags: ['digital-marketing'],
       imageUrl: 'src/assets/Marketinsights.jpg',
-      altText: 'Analytics dashboard showing marketing campaign results',
+      altText: '../Marketinsights.jpg',
       color: 'from-pink-500 to-rose-400'
     },
     {
