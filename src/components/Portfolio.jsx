@@ -9,7 +9,7 @@ const Portfolio = () => {
       title: 'Aura Finance',
       description: 'A secure mobile banking app that increased user engagement by 150%.',
       tags: ['app-development', 'ui-ux-design'],
-      imageUrl: '/src/assets/AuraFinance.jpg',
+      imageUrl: '../AuraFinance.jpg',
       altText: 'Screenshot of the Aura Finance mobile app',
       color: 'from-cyan-500 to-teal-400'
     },
@@ -45,8 +45,8 @@ const Portfolio = () => {
       title: 'Market Insights',
       description: 'A data-driven marketing campaign that increased lead generation by 200%.',
       tags: ['digital-marketing'],
-      imageUrl: 'src/assets/Marketinsights.jpg',
-      altText: '../Marketinsights.jpg',
+      imageUrl: '../Marketinsights.jpg',
+      altText: 'MarketInsight',
       color: 'from-pink-500 to-rose-400'
     },
     {
