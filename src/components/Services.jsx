@@ -13,7 +13,7 @@ const Services = () => {
         'API Development'
       ],
       technologies: ['React / Next.js', 'Node.js / Python', 'Shopify / WooCommerce', 'AWS / Google Cloud'],
-      image: 'https://images.unsplash.com/photo-1516321310762-4794371e6a6f?q=80&w=1170&auto=format&fit=crop',
+      image: '../webdev.png',
       alt: 'A team of developers collaborating on a web project'
     },
     {
@@ -22,7 +22,7 @@ const Services = () => {
         'Engage your users on their favorite devices with intuitive and powerful mobile applications. We handle the entire lifecycle from idea and UX design to App Store submission and ongoing support, delivering native apps with top performance and user experience.',
       deliverables: ['iOS Applications', 'Android Applications', 'UX/UI Prototyping', 'App Store Optimization'],
       technologies: ['Swift (iOS)', 'Kotlin (Android)', 'React Native', 'Firebase'],
-      image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1170&auto=format&fit=crop',
+      image: '../andrioddev.png',
       alt: 'A designer showing a mobile app interface on a smartphone'
     },
     {
@@ -31,7 +31,7 @@ const Services = () => {
         'Drive targeted traffic, generate qualified leads, and grow your revenue with our data-driven marketing strategies. We create a powerful brand presence and deliver measurable ROI through a holistic approach to digital marketing.',
       deliverables: ['SEO Audits & Strategy', 'Content Marketing Plans', 'PPC Campaign Management', 'Social Media Strategy'],
       technologies: ['Google Analytics / Ads', 'Meta Business Suite', 'Ahrefs / SEMrush', 'HubSpot'],
-      image: 'https://images.unsplash.com/photo-1551288049-b1f3a0c3f3b0?q=80&w=1170&auto=format&fit=crop',
+      image: '../Marketinsights.jpg',
       alt: 'A chart showing positive growth from a digital marketing campaign'
     },
     {
@@ -40,7 +40,7 @@ const Services = () => {
         'Great design is about creating intuitive and memorable experiences that build brand loyalty. We conduct deep user research to craft interfaces that are beautiful, effective, and optimized for conversions.',
       deliverables: ['User Research & Personas', 'Wireframing & Prototyping', 'Brand Identity Design', 'Comprehensive Style Guides'],
       technologies: ['Figma', 'Adobe Creative Suite', 'Miro', 'Maze'],
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1170&auto=format&fit=crop',
+      image: '../wireframe.png',
       alt: 'A designer working on a user interface wireframe on a large screen'
     }
   ];
