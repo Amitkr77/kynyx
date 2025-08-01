@@ -105,27 +105,52 @@ const ContactForm = () => {
           </div>
 
           {/* Services */}
-          <div>
-            <p className="text-xl font-semibold mb-2">Select Services</p>
-            <div className="grid sm:grid-cols-2 gap-2 text-sm">
-              <label className="flex items-center gap-2">
-                <input type="checkbox" name="seo" checked={formData.services.seo} onChange={handleChange} />
-                SEO
-              </label>
-              <label className="flex items-center gap-2">
-                <input type="checkbox" name="content" checked={formData.services.content} onChange={handleChange} />
-                Content Marketing
-              </label>
-              <label className="flex items-center gap-2">
-                <input type="checkbox" name="paid" checked={formData.services.paid} onChange={handleChange} />
-                Paid Media Marketing
-              </label>
-              <label className="flex items-center gap-2">
-                <input type="checkbox" name="all" checked={formData.services.all} onChange={handleChange} />
-                Select All
-              </label>
-            </div>
-          </div>
+          {/* Services as Single Select Dropdown */}
+<div>
+  <label htmlFor="service" className="text-xl font-semibold mb-2 block">
+    Select Service
+  </label>
+  <select
+    name="service"
+    id="service"
+    value={
+      formData.services.all
+        ? 'all'
+        : formData.services.seo
+        ? 'seo'
+        : formData.services.content
+        ? 'content'
+        : formData.services.paid
+        ? 'paid'
+        : ''
+    }
+    onChange={(e) => {
+      const selected = e.target.value;
+      setFormData({
+        ...formData,
+        services: {
+          seo: selected === 'seo',
+          content: selected === 'content',
+          paid: selected === 'paid',
+          all: selected === 'all',
+        },
+      });
+    }}
+    className="w-full bg-[#ffe3d9] text-black px-4 py-2 rounded outline-none"
+    required
+  >
+    <option value="">-- Select a Service --</option>
+    <option value="seo">SEO</option>
+    <option value="content">Content Marketing</option>
+    <option value="marketing">Digital Marketing</option>
+    <option value="web">Custom Web Development</option>
+    <option value="app">Mobile app Development</option>
+    
+    <option value="ui">UI/UX Design & Branding</option>
+    <option value="all">All Services</option>
+  </select>
+</div>
+
 
           {/* Message */}
           <textarea
