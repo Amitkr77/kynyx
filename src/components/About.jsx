@@ -9,22 +9,22 @@ const AboutUs = () => {
       alt: 'CEO of Kynyx Solutions'
     },
     {
-      name: 'Nitish Kumar',
+      name: 'Nitesh Kumar',
       title: 'Marketing Executive',
       image: '../Nitesh.png',
-      alt: 'Headshot of John Smith, CTO of Kynyx Solutions'
+      alt: 'Nitesh kumar'
     },
     {
       name: 'Aditya kumar',
       title: 'Social Media Manager',
       image: '../Aditya.jpeg',
-      alt: 'Headshot of Alice Johnson, COO of Kynyx Solutions'
+      alt: 'Aditya'
     },
     {
       name: 'Hrithik Kumar',
       title: 'Developer',
       image: '../Developer.jpg',
-      alt: 'Headshot of Bob Brown, CFO of Kynyx Solutions'
+      alt: 'Hrithik kumar'
     }
   ];
 

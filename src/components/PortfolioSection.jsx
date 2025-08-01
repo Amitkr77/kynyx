@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const PortfolioSection = () => {
-  const navigate = useNavigate(); // ✅ Hook from react-router-dom
+  const navigate = useNavigate();
 
   const projects = [
     {
@@ -10,26 +10,29 @@ const PortfolioSection = () => {
       description: 'A secure mobile banking app that increased user engagement by 150%.',
       image: 'https://placehold.co/600x400/1A1B1E/00F2DE?text=FinTech+App',
       alt: 'FinTech App',
-      color: 'from-cyan-500 to-teal-400'
+      color: 'from-cyan-500 to-teal-400',
     },
     {
       title: 'Nexus Commerce',
       description: 'A custom B2B e-commerce platform that boosted online sales by 80%.',
       image: 'https://placehold.co/600x400/1A1B1E/7A69E1?text=E-commerce+Site',
       alt: 'E-commerce Site',
-      color: 'from-purple-600 to-indigo-500'
+      color: 'from-purple-600 to-indigo-500',
     },
     {
       title: 'ConnectSphere',
       description: 'A SaaS platform for team collaboration that acquired 10,000 users in its first six months.',
       image: 'https://placehold.co/600x400/1A1B1E/FBBF24?text=SaaS+Platform',
       alt: 'SaaS Platform',
-      color: 'from-amber-400 to-yellow-500'
-    }
+      color: 'from-amber-400 to-yellow-500',
+    },
   ];
 
   return (
-    <section id="portfolio" className="bg-gradient-to-b from-gray-900 to-gray-800 py-20">
+    <section
+      id="portfolio"
+      className="bg-gradient-to-b from-gray-900 to-gray-800 py-20 scroll-mt-24"
+    >
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-poppins font-bold text-5xl text-white tracking-tight">
@@ -45,7 +48,9 @@ const PortfolioSection = () => {
               key={index}
               className="relative bg-gray-800 rounded-xl overflow-hidden shadow-lg transform hover:-translate-y-2 transition-all duration-300 group"
             >
-              <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
+              />
               <img
                 src={project.image}
                 alt={project.alt}

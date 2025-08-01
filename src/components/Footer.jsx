@@ -60,20 +60,20 @@ const Footer = () => {
             <Link to="/" className="inline-block">
               <img src={logo} alt="Kynyx Logo" className="h-10 bg-white rounded-sm" />
             </Link>
-            <p className="text-gray-300 text-xl leading-relaxed font-sans ">
+            <p className="text-gray-300 text-m leading-relaxed font-sans ">
               We build innovative digital solutions that empower businesses. Partner with us for cutting-edge technology and impactful results.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-m font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.href}
-                    className="text-gray-300 hover:text-cyan-500 text-lg font-sans transition"
+                    className="text-gray-300 hover:text-cyan-500 text-m font-sans transition"
                   >
                     {link.name}
                   </Link>
@@ -84,8 +84,8 @@ const Footer = () => {
 
           {/* Address */}
           <div>
-            <h4 className="text-lg font-sans mb-4">Address</h4>
-            <address className="text-gray-300 not-italic  leading-relaxed font-sans text-xl ">
+            <h4 className="text-m font-sans mb-4">Address</h4>
+            <address className="text-gray-300 not-italic  leading-relaxed font-sans text-m ">
               Kynyx Solutions LLC<br />
               8, The Green, Suite A<br />
               Dover, DE 19091 US
@@ -94,8 +94,8 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h4 className="text-lg font-sans mb-4">Stay Connected</h4>
-            <p className="text-gray-300 text-lg font-sans mb-3">
+            <h4 className="text-m font-sans mb-4">Stay Connected</h4>
+            <p className="text-gray-300 text-m font-sans mb-3">
               Subscribe to our newsletter for updates, news, and insights.
             </p>
             <form className="flex flex-col sm:flex-row gap-3">
