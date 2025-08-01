@@ -1,6 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const PortfolioSection = () => {
+  const navigate = useNavigate(); // ✅ Hook from react-router-dom
+
   const projects = [
     {
       title: 'Aura Finance',
@@ -55,7 +58,10 @@ const PortfolioSection = () => {
                 <p className="font-inter text-gray-300 leading-relaxed">
                   {project.description}
                 </p>
-                <button className="mt-4 px-4 py-2 bg-white text-gray-900 font-poppins font-medium rounded-full hover:bg-gray-100 transition-colors duration-200">
+                <button
+                  onClick={() => navigate('/portfolio')}
+                  className="mt-4 px-4 py-2 bg-white text-gray-900 font-poppins font-medium rounded-full hover:bg-gray-100 transition-colors duration-200"
+                >
                   View Project
                 </button>
               </div>

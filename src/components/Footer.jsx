@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const navLinks = [
-    { name: "About Us", href: "#about" },
+    { name: "About Us", href: "/about" },
     { name: "Career", href: "/career" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Terms of Service", href: "/terms-of-service" },
