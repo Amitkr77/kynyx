@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
 const contactRoutes = require("./routes/contact.route");
+const quoteRoute = require("./routes/quote.route");
 const errorHandler = require("./middlewares/errorHandler");
 
 
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/contact", contactRoutes);
+app.use("/api/get-quote", quoteRoute);
 
 // Global error handler
 app.use(errorHandler);
