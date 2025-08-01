@@ -1,6 +1,6 @@
-const sendMail = require("../services/mail.service");
+const sendMail = require("../services/contactMail.service");
 const sanitizeInput = require("../utils/sanitize");
-const saveToGoogleSheet = require("../services/saveToGoogleSheet");
+const saveToGoogleSheet = require("../services/saveContactToGoogleSheet");
 
 const handleContact = async (req, res, next) => {
   try {
