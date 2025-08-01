@@ -1,9 +1,9 @@
 const transporter = require("../config/mail.config");
 
-module.exports = async ({ name, email, service, message }) => {
+const sendContactEmail = async ({ name, email, service, message }) => {
   const mailOptions = {
-    from: `"Kynyx Contact Form" <no-reply@homeasy.io>`,
-    to: process.env.TO_EMAIL,
+    from: `Kynyx Contact Form  <no-reply@homeasy.io>`,
+    to: process.env.COMPANY_EMAIL,
     subject: `Contact Request: ${service}`,
     html: `
       <h3>Contact Form Submission</h3>
@@ -17,3 +17,5 @@ module.exports = async ({ name, email, service, message }) => {
 
   await transporter.sendMail(mailOptions);
 };
+
+module.exports = sendContactEmail;
