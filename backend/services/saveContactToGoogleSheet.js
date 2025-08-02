@@ -10,7 +10,7 @@ const saveToGoogleSheet = async ({ name, email, service, message }) => {
   const client = await auth.getClient();
   const sheets = google.sheets({ version: "v4", auth: client });
 
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.CONTACT_SHEET_ID;
   const sheetName = "Submissions";
 
   // Check if headers are present
