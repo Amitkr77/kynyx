@@ -6,7 +6,7 @@ const auth = new google.auth.GoogleAuth({
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
-const saveToGoogleSheet = async ({ name, email, service, message }) => {
+const saveToGoogleSheet = async ({ name, email, service, message, phone }) => {
   const client = await auth.getClient();
   const sheets = google.sheets({ version: "v4", auth: client });
 
@@ -25,10 +25,10 @@ const saveToGoogleSheet = async ({ name, email, service, message }) => {
   if (isEmpty) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${sheetName}!A1:E1`,
+      range: `${sheetName}!A1:F1`,
       valueInputOption: "RAW",
       resource: {
-        values: [["NAME", "EMAIL", "SERVICE OPTED", "DESCRPTION", "DATE"]],
+        values: [["NAME", "EMAIL", "PHONE", "SERVICE OPTED", "DESCRPTION", "DATE"]],
       },
     });
 
@@ -48,7 +48,7 @@ const saveToGoogleSheet = async ({ name, email, service, message }) => {
                   startRowIndex: 0,
                   endRowIndex: 1,
                   startColumnIndex: 0,
-                  endColumnIndex: 5,
+                  endColumnIndex: 6,
                 },
                 cell: {
                   userEnteredFormat: {
@@ -78,7 +78,7 @@ const saveToGoogleSheet = async ({ name, email, service, message }) => {
     range: `${sheetName}!A:E`,
     valueInputOption: "RAW",
     resource: {
-      values: [[name, email, service, message, now]],
+      values: [[name, email, phone, service, message, now]],
     },
   });
 };
