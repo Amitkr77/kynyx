@@ -1,57 +1,58 @@
-import React, { useEffect, useState } from "react";
-import { Mail } from "lucide-react";
-import axios from "axios";
+import React, { useState } from 'react';
+import { Mail } from 'lucide-react';
+import axios from 'axios';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    services: {
-      seo: false,
-      content: false,
-      paid: false,
-      all: false,
-    },
-    message: "",
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    message: '',
   });
 
-  // useEffect(async(
-  //   const res = await fetch("",)
-
-  
-  // ) => {}, []);
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    if (name in formData.services) {
-      const updatedServices = {
-        ...formData.services,
-        [name]: checked,
-        ...(name === "all" && {
-          seo: checked,
-          content: checked,
-          paid: checked,
-        }),
-      };
-      setFormData({ ...formData, services: updatedServices });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Add API integration here
+    setLoading(true);
+    setSuccessMsg('');
+    setErrorMsg('');
+
+    try {
+      const response = await axios.post('http://localhost:5000/api/contact/send-message', formData);
+
+      if (response.status === 200) {
+        setSuccessMsg('Message sent successfully!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: '',
+        });
+      }
+    } catch (error) {
+      setErrorMsg('Failed to send message. Please try again.');
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="bg-[#0f172a] text-white w-full min-h-screen py-10 px-6 md:px-20 font-sans flex items-center justify-center">
       <div className="w-full max-w-7xl grid md:grid-cols-2 gap-12 items-start">
-        {/* Address & Map */}
+        {/* Map & Address */}
         <div className="relative w-full flex justify-center">
           <img
             src="../USAMAPS.png"
@@ -60,7 +61,7 @@ const ContactForm = () => {
           />
           <div className="absolute top-[60px] left-[80px] bg-[#0f172a] text-sm text-white border border-orange-500 px-4 py-2 rounded-md">
             <p>Kynyx Solutions LLC 8,</p>
-            <p>The Green, suite A Dover, </p>
+            <p>The Green, Suite A Dover,</p>
             <p>DE 19091 US</p>
           </div>
         </div>
@@ -108,41 +109,16 @@ const ContactForm = () => {
             />
           </div>
 
-          {/* Services */}
-          {/* Services as Single Select Dropdown */}
+          {/* Service Dropdown */}
           <div>
-            <label
-              htmlFor="service"
-              className="text-xl font-semibold mb-2 block"
-            >
+            <label htmlFor="service" className="text-xl font-semibold mb-2 block">
               Select Service
             </label>
             <select
               name="service"
               id="service"
-              value={
-                formData.services.all
-                  ? "all"
-                  : formData.services.seo
-                  ? "seo"
-                  : formData.services.content
-                  ? "content"
-                  : formData.services.paid
-                  ? "paid"
-                  : ""
-              }
-              onChange={(e) => {
-                const selected = e.target.value;
-                setFormData({
-                  ...formData,
-                  services: {
-                    seo: selected === "seo",
-                    content: selected === "content",
-                    paid: selected === "paid",
-                    all: selected === "all",
-                  },
-                });
-              }}
+              value={formData.service}
+              onChange={handleChange}
               className="w-full bg-[#ffe3d9] text-black px-4 py-2 rounded outline-none"
               required
             >
@@ -151,8 +127,7 @@ const ContactForm = () => {
               <option value="content">Content Marketing</option>
               <option value="marketing">Digital Marketing</option>
               <option value="web">Custom Web Development</option>
-              <option value="app">Mobile app Development</option>
-
+              <option value="app">Mobile App Development</option>
               <option value="ui">UI/UX Design & Branding</option>
               <option value="all">All Services</option>
             </select>
@@ -168,12 +143,17 @@ const ContactForm = () => {
             required
           />
 
-          {/* Submit */}
+          {/* Feedback Messages */}
+          {successMsg && <p className="text-green-400">{successMsg}</p>}
+          {errorMsg && <p className="text-red-500">{errorMsg}</p>}
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="bg-orange-600 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-orange-700 transition"
+            disabled={loading}
+            className="bg-orange-600 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-orange-700 transition disabled:opacity-50"
           >
-            SEND <Mail size={18} />
+            {loading ? 'SENDING...' : 'SEND'} <Mail size={18} />
           </button>
         </form>
       </div>
