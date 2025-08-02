@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
-import { Mail } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { Mail } from "lucide-react";
+import axios from "axios";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
     services: {
       seo: false,
       content: false,
       paid: false,
       all: false,
     },
-    message: '',
+    message: "",
   });
+
+  // useEffect(async(
+  //   const res = await fetch("",)
+
+  
+  // ) => {}, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -23,7 +30,7 @@ const ContactForm = () => {
       const updatedServices = {
         ...formData.services,
         [name]: checked,
-        ...(name === 'all' && {
+        ...(name === "all" && {
           seo: checked,
           content: checked,
           paid: checked,
@@ -52,17 +59,14 @@ const ContactForm = () => {
             className="w-full max-w-md object-contain"
           />
           <div className="absolute top-[60px] left-[80px] bg-[#0f172a] text-sm text-white border border-orange-500 px-4 py-2 rounded-md">
-            <p>533 Airport Blvd #510,</p>
-            <p>Burlingame, CA 94010,</p>
-            <p>United States</p>
+            <p>Kynyx Solutions LLC 8,</p>
+            <p>The Green, suite A Dover, </p>
+            <p>DE 19091 US</p>
           </div>
         </div>
 
         {/* Contact Form */}
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-6 w-full"
-        >
+        <form onSubmit={handleSubmit} className="space-y-6 w-full">
           <h2 className="text-3xl font-bold">Get in Touch</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
@@ -106,51 +110,53 @@ const ContactForm = () => {
 
           {/* Services */}
           {/* Services as Single Select Dropdown */}
-<div>
-  <label htmlFor="service" className="text-xl font-semibold mb-2 block">
-    Select Service
-  </label>
-  <select
-    name="service"
-    id="service"
-    value={
-      formData.services.all
-        ? 'all'
-        : formData.services.seo
-        ? 'seo'
-        : formData.services.content
-        ? 'content'
-        : formData.services.paid
-        ? 'paid'
-        : ''
-    }
-    onChange={(e) => {
-      const selected = e.target.value;
-      setFormData({
-        ...formData,
-        services: {
-          seo: selected === 'seo',
-          content: selected === 'content',
-          paid: selected === 'paid',
-          all: selected === 'all',
-        },
-      });
-    }}
-    className="w-full bg-[#ffe3d9] text-black px-4 py-2 rounded outline-none"
-    required
-  >
-    <option value="">-- Select a Service --</option>
-    <option value="seo">SEO</option>
-    <option value="content">Content Marketing</option>
-    <option value="marketing">Digital Marketing</option>
-    <option value="web">Custom Web Development</option>
-    <option value="app">Mobile app Development</option>
-    
-    <option value="ui">UI/UX Design & Branding</option>
-    <option value="all">All Services</option>
-  </select>
-</div>
+          <div>
+            <label
+              htmlFor="service"
+              className="text-xl font-semibold mb-2 block"
+            >
+              Select Service
+            </label>
+            <select
+              name="service"
+              id="service"
+              value={
+                formData.services.all
+                  ? "all"
+                  : formData.services.seo
+                  ? "seo"
+                  : formData.services.content
+                  ? "content"
+                  : formData.services.paid
+                  ? "paid"
+                  : ""
+              }
+              onChange={(e) => {
+                const selected = e.target.value;
+                setFormData({
+                  ...formData,
+                  services: {
+                    seo: selected === "seo",
+                    content: selected === "content",
+                    paid: selected === "paid",
+                    all: selected === "all",
+                  },
+                });
+              }}
+              className="w-full bg-[#ffe3d9] text-black px-4 py-2 rounded outline-none"
+              required
+            >
+              <option value="">-- Select a Service --</option>
+              <option value="seo">SEO</option>
+              <option value="content">Content Marketing</option>
+              <option value="marketing">Digital Marketing</option>
+              <option value="web">Custom Web Development</option>
+              <option value="app">Mobile app Development</option>
 
+              <option value="ui">UI/UX Design & Branding</option>
+              <option value="all">All Services</option>
+            </select>
+          </div>
 
           {/* Message */}
           <textarea
