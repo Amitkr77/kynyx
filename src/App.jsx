@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
 import Home from "./Home";
-import Services from"./components/Services";
+import Services from "./components/Services";
 import Navbar from "./components/Navbar";
 import Contact from "./components/Contact";
 import Portfolio from "./components/Portfolio";
@@ -15,7 +14,7 @@ import PrivacyPolicy from "./components/Privacypolicy";
 import TermsOfService from "./components/TermsofService";
 import ReturnrefundPolicy from "./components/ReturnrefundPolicy";
 import Career from "./components/Career";
-
+import ScrollToTop from "./components/ScrollToTop";
 
 const NotFound = () => (
   <div
@@ -38,26 +37,29 @@ const NotFound = () => (
 const App = () => {
   return (
     <Router>
-    <div className="font-['Inter'] bg-[#0d0d1a] text-white overflow-x-hidden">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/solutions" element={<Solutions />} /> */}
-        <Route path="/Services" element={<Services />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
-        <Route path="/terms-of-service" element={<TermsOfService/>} />
-        <Route path="/return-refund-policy" element={<ReturnrefundPolicy/>} />
-        <Route path="/career" element={<Career />} />
-        
-        
-        <Route path="/get-quote" element={<Getquote />} />
-      </Routes>
-      <Footer/>
-    </div>
-  </Router>
+      <div className="font-['Inter'] bg-[#0d0d1a] text-white overflow-x-hidden">
+        <ScrollToTop />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/solutions" element={<Solutions />} /> */}
+          <Route path="/Services" element={<Services />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route
+            path="/return-refund-policy"
+            element={<ReturnrefundPolicy />}
+          />
+          <Route path="/career" element={<Career />} />
+
+          <Route path="/get-quote" element={<Getquote />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
