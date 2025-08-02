@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "../assets/logo8.png";
+import logo from "../assets/logo12.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-[#030303] text-white px-6 lg:px-10 py-4">
-      <div className="flex justify-between items-center relative">
-        {/* Logo */}
-        {/* Logo */}
-<Link to="/" className="flex items-center gap-3 z-10">
-  <img
-    src={logo}
-    alt="Kynyx Logo"
-    className="h-8 sm:h-10 lg:h-12 w-auto object-contain transition-all duration-300 ease-in-out"
-  />
-</Link>
+   <header className="bg-black/30 backdrop-blur text-white px-6 lg:px-10 py-1 fixed w-full z-50">
+  <div className="flex justify-between items-center relative">
+    <Link to="/" className="flex items-center gap-3 z-10">
+      <img
+        src={logo}
+        alt="Kynyx Logo"
+        className="h-8 sm:h-10 lg:h-12 w-auto object-contain transition-all duration-300 ease-in-out"
+      />
+    </Link>
+    {/* ... rest of the nav code remains unchanged ... */}
+
 
 
         {/* Centered Nav */}
