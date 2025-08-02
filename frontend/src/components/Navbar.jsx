@@ -16,7 +16,7 @@ const Navbar = () => {
         className="h-8 sm:h-10 lg:h-12 w-auto object-contain transition-all duration-300 ease-in-out"
       />
     </Link>
-    {/* ... rest of the nav code remains unchanged ... */}
+    
 
 
 
