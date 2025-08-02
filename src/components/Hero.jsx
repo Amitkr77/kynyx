@@ -17,14 +17,14 @@ const Hero = () => (
     </div>
 
     {/* Foreground Content */}
-    <div className="relative z-10 text-center px-4 sm:px-6 md:px-10 max-w-[90%] sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
+    <div className="relative z-10 text-center px-4 sm:px-6 md:px-10 max-w-[90%]">
       {/* Main Heading */}
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight sm:leading-snug mb-6 sm:mb-8 text-shadow-lg tracking-tight">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight sm:leading-snug mb-4 sm:mb-6 text-shadow-lg tracking-tight">
         Innovate.<br />Transform. Achieve.
       </h1>
 
       {/* Subtitle */}
-      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 font-light leading-relaxed opacity-85 tracking-wide">
+      <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 font-light leading-relaxed opacity-85 tracking-wide">
         Driving Digital Success with<br />Cutting-Edge Solutions
       </p>
 
@@ -34,7 +34,7 @@ const Hero = () => (
         duration={800}
         offset={-70} 
       >
-        <button className="px-8 py-4 sm:px-8 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full text-white font-semibold text-lg md:text-xl transition-transform duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none">
+        <button className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full text-white font-semibold text-base sm:text-lg md:text-xl transition-transform duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none">
           Get Started
         </button>
       </Link>
