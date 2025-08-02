@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import Logovideo from '/logo3.mp4';
 
 const Hero = () => (
-  <section className="relative w-full min-h-[650px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#1a242e] to-[#0f0f1a] text-white">
+  <section className="relative w-full min-h-[750px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#1a242e] to-[#0f0f1a] text-white">
     
     {/* Background Video */}
     <div className="absolute inset-0 z-0 pointer-events-none">
