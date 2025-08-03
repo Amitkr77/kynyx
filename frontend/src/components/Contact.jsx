@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Mail } from "lucide-react";
+import React, { useState } from "react";
 import axios from "axios";
+import { Mail } from "lucide-react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -8,44 +8,48 @@ const ContactForm = () => {
     email: "",
     phone: "",
     company: "",
-    services: {
-      seo: false,
-      content: false,
-      paid: false,
-      all: false,
-    },
+    service: "", 
     message: "",
   });
 
-  // useEffect(async(
-  //   const res = await fetch("",)
-
-  
-  // ) => {}, []);
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    if (name in formData.services) {
-      const updatedServices = {
-        ...formData.services,
-        [name]: checked,
-        ...(name === "all" && {
-          seo: checked,
-          content: checked,
-          paid: checked,
-        }),
-      };
-      setFormData({ ...formData, services: updatedServices });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Add API integration here
+    setLoading(true);
+    setSuccessMsg("");
+    setErrorMsg("");
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/contact/send-message",
+        formData
+      );
+
+      if (response.status === 200) {
+        setSuccessMsg("Message sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      setErrorMsg("Failed to send message. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -68,6 +72,9 @@ const ContactForm = () => {
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="space-y-6 w-full">
           <h2 className="text-3xl font-bold">Get in Touch</h2>
+
+          {successMsg && <p className="text-green-500">{successMsg}</p>}
+          {errorMsg && <p className="text-red-500">{errorMsg}</p>}
 
           <div className="grid md:grid-cols-2 gap-4">
             <input
@@ -108,8 +115,7 @@ const ContactForm = () => {
             />
           </div>
 
-          {/* Services */}
-          {/* Services as Single Select Dropdown */}
+          {/* Service Dropdown */}
           <div>
             <label
               htmlFor="service"
@@ -120,29 +126,8 @@ const ContactForm = () => {
             <select
               name="service"
               id="service"
-              value={
-                formData.services.all
-                  ? "all"
-                  : formData.services.seo
-                  ? "seo"
-                  : formData.services.content
-                  ? "content"
-                  : formData.services.paid
-                  ? "paid"
-                  : ""
-              }
-              onChange={(e) => {
-                const selected = e.target.value;
-                setFormData({
-                  ...formData,
-                  services: {
-                    seo: selected === "seo",
-                    content: selected === "content",
-                    paid: selected === "paid",
-                    all: selected === "all",
-                  },
-                });
-              }}
+              value={formData.service}
+              onChange={handleChange}
               className="w-full bg-[#ffe3d9] text-black px-4 py-2 rounded outline-none"
               required
             >
@@ -151,8 +136,7 @@ const ContactForm = () => {
               <option value="content">Content Marketing</option>
               <option value="marketing">Digital Marketing</option>
               <option value="web">Custom Web Development</option>
-              <option value="app">Mobile app Development</option>
-
+              <option value="app">Mobile App Development</option>
               <option value="ui">UI/UX Design & Branding</option>
               <option value="all">All Services</option>
             </select>
@@ -171,9 +155,12 @@ const ContactForm = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="bg-orange-600 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-orange-700 transition"
+            disabled={loading}
+            className={`bg-orange-600 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-orange-700 transition ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            SEND <Mail size={18} />
+            {loading ? "Sending..." : "SEND"} <Mail size={18} />
           </button>
         </form>
       </div>
