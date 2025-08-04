@@ -1,48 +1,51 @@
-import React, { useState } from 'react';
-import { Mail } from 'lucide-react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { Mail } from "lucide-react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    service: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    service: "", 
+    message: "",
   });
 
   const [loading, setLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setSuccessMsg('');
-    setErrorMsg('');
+    setSuccessMsg("");
+    setErrorMsg("");
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact/send-message', formData);
+      const response = await axios.post(
+        "http://localhost:5000/api/contact/send-message",
+        formData
+      );
 
       if (response.status === 200) {
-        setSuccessMsg('Message sent successfully!');
+        setSuccessMsg("Message sent successfully!");
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          service: '',
-          message: '',
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          message: "",
         });
       }
     } catch (error) {
-      setErrorMsg('Failed to send message. Please try again.');
+      setErrorMsg("Failed to send message. Please try again.");
       console.error(error);
     } finally {
       setLoading(false);
@@ -69,6 +72,9 @@ const ContactForm = () => {
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="space-y-6 w-full">
           <h2 className="text-3xl font-bold">Get in Touch</h2>
+
+          {successMsg && <p className="text-green-500">{successMsg}</p>}
+          {errorMsg && <p className="text-red-500">{errorMsg}</p>}
 
           <div className="grid md:grid-cols-2 gap-4">
             <input
@@ -151,9 +157,11 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={loading}
-            className="bg-orange-600 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-orange-700 transition disabled:opacity-50"
+            className={`bg-orange-600 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-orange-700 transition ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
-            {loading ? 'SENDING...' : 'SEND'} <Mail size={18} />
+            {loading ? "Sending..." : "SEND"} <Mail size={18} />
           </button>
         </form>
       </div>

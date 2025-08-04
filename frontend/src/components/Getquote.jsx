@@ -1,53 +1,73 @@
 import React, { useState } from "react";
 
-const Getquote = () => {
+const BookConsultation = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "",
-    budget: "",
-    timeline: "",
+    date: "",
+    time: "",
     message: "",
+    services: [],
   });
 
+  const [submitted, setSubmitted] = useState(false);
+
   const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    const { name, value, type, selectedOptions } = e.target;
+
+    if (name === "services") {
+      const selectedValues = Array.from(selectedOptions, (option) => option.value);
+      setFormData((prev) => ({
+        ...prev,
+        services: selectedValues,
+      }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted form:", formData);
-    alert("Thank you! We'll get back to you shortly.");
+    console.log("Form submitted:", formData);
+    setSubmitted(true);
+
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      date: "",
+      time: "",
+      message: "",
+      services: [],
+    });
   };
 
   return (
-    <div className="min-h-screen bg-[#0f0f1a] text-white px-6 md:px-20 py-16 font-sans">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center text-white">
-          Request a Quote
-        </h1>
-        <p className="text-gray-400 text-lg text-center mb-12 max-w-2xl mx-auto">
-          Tell us about your project and we'll create a customized quote to fit
-          your business goals.
-        </p>
+    <div className="min-h-screen bg-[#0f172a] text-white px-4 py-12 flex items-center justify-center">
+      <div className="w-full max-w-3xl bg-[#1e293b] p-8 rounded-xl shadow-lg">
+        <h2 className="text-3xl font-bold mb-6 text-center">
+          Book a Free Consultation
+        </h2>
 
-        <form
-          onSubmit={handleSubmit}
-          className="bg-[#18181f] p-8 rounded-2xl shadow-xl space-y-6"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {submitted && (
+          <div className="mb-4 text-green-400 text-center font-medium">
+            Thank you! We'll contact you soon.
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Name & Email */}
+          <div className="grid md:grid-cols-2 gap-4">
             <input
               type="text"
               name="name"
-              placeholder="Your Name"
+              placeholder="Full Name"
               value={formData.name}
               onChange={handleChange}
+              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
               required
-              className="bg-gray-800 text-white px-4 py-3 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             />
             <input
               type="email"
@@ -55,68 +75,105 @@ const Getquote = () => {
               placeholder="Email Address"
               value={formData.email}
               onChange={handleChange}
+              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
               required
-              className="bg-gray-800 text-white px-4 py-3 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone (Optional)"
-              value={formData.phone}
-              onChange={handleChange}
-              className="bg-gray-800 text-white px-4 py-3 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            />
-            <select
-              name="service"
-              value={formData.service}
-              onChange={handleChange}
-              required
-              className="bg-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            >
-              <option value="">Select Service</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile App Development">Mobile App Development</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="SEO & Marketing">SEO & Marketing</option>
-              <option value="Other">Other</option>
-            </select>
-            <select
-              name="budget"
-              value={formData.budget}
-              onChange={handleChange}
-              className="bg-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
-            >
-              <option value="">Select Budget</option>
-              <option value="Below $1,000">Below $1,000</option>
-              <option value="$1,000 - $5,000">$1,000 - $5,000</option>
-              <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-              <option value="Above $10,000">Above $10,000</option>
-            </select>
-            <input
-              type="text"
-              name="timeline"
-              placeholder="Timeline (e.g., 4 weeks)"
-              value={formData.timeline}
-              onChange={handleChange}
-              className="bg-gray-800 text-white px-4 py-3 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
             />
           </div>
 
+          {/* Phone & Date */}
+          <div className="grid md:grid-cols-2 gap-4">
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+              required
+            />
+            <input
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleChange}
+              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+              required
+            />
+          </div>
+
+          {/* Time */}
+          <input
+            type="time"
+            name="time"
+            value={formData.time}
+            onChange={handleChange}
+            className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+            required
+          />
+         <div className="grid md:grid-cols-2 gap-4">
+            <input
+              type="text"
+              name="Country"
+              placeholder="Country"
+              value={formData.country}
+              onChange={handleChange}
+              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+              required
+            />
+            <input
+              type="text"
+              name="city"
+              placeholder="City"
+              value={formData.city}
+              onChange={handleChange}
+              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+              required
+            />
+          </div>
+
+          {/* Services Section (Dropdown) */}
+           <div>
+            <label
+              htmlFor="service"
+              className="text-xl font-semibold mb-2 block"
+            >
+              Select Service
+            </label>
+            <select
+              name="service"
+              id="service"
+              value={formData.service}
+              onChange={handleChange}
+              className="w-full bg-[#ffe3d9] text-black px-4 py-2 rounded outline-none"
+              required
+            >
+              <option value="">-- Select a Service --</option>
+              <option value="seo">SEO</option>
+              <option value="content">Content Marketing</option>
+              <option value="marketing">Digital Marketing</option>
+              <option value="web">Custom Web Development</option>
+              <option value="app">Mobile App Development</option>
+              <option value="ui">UI/UX Design & Branding</option>
+              <option value="all">All Services</option>
+            </select>
+          </div>
+
+
+          {/* Message */}
           <textarea
             name="message"
-            rows="5"
-            placeholder="Describe your project goals, requirements, or any specific features..."
+            placeholder="Describe your requirement (optional)"
             value={formData.message}
             onChange={handleChange}
-            required
-            className="w-full bg-gray-800 text-white px-4 py-3 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="bg-[#ffe3d9] text-black px-4 py-3 rounded w-full resize-y min-h-[100px] outline-none"
           />
 
+          {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-500 to-blue-500 py-3 text-lg font-semibold text-white rounded-lg hover:scale-105 active:scale-95 transition-transform duration-300"
+            className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded w-full font-semibold transition"
           >
-            Get My Quote
+            Book Now
           </button>
         </form>
       </div>
@@ -124,4 +181,4 @@ const Getquote = () => {
   );
 };
 
-export default Getquote;
+export default BookConsultation;
