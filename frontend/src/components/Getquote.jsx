@@ -1,184 +1,207 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // 🆕
 
-const BookConsultation = () => {
+const BookConsultationForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    date: "",
-    time: "",
+    country: "",
+    city: "",
+    service: "",
     message: "",
-    services: [],
   });
 
+  const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value, type, selectedOptions } = e.target;
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-    if (name === "services") {
-      const selectedValues = Array.from(selectedOptions, (option) => option.value);
-      setFormData((prev) => ({
-        ...prev,
-        services: selectedValues,
-      }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.includes("@")) newErrors.email = "Invalid email address";
+    if (!formData.phone.match(/^\d{10}$/))
+      newErrors.phone = "Phone must be 10 digits";
+    if (!formData.country) newErrors.country = "Country is required";
+    if (!formData.city) newErrors.city = "City is required";
+    if (!formData.service) newErrors.service = "Please select a service";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validate()) return;
+
     console.log("Form submitted:", formData);
     setSubmitted(true);
-
-    // Reset form
     setFormData({
       name: "",
       email: "",
       phone: "",
-      date: "",
-      time: "",
+      country: "",
+      city: "",
+      service: "",
       message: "",
-      services: [],
     });
+
+    setTimeout(() => setSubmitted(false), 4000);
+    onClose(); // Optional: close after submit
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a] text-white px-4 py-12 flex items-center justify-center">
-      <div className="w-full max-w-3xl bg-[#1e293b] p-8 rounded-xl shadow-lg">
-        <h2 className="text-3xl font-bold mb-6 text-center">
-          Book a Free Consultation
-        </h2>
-
-        {submitted && (
-          <div className="mb-4 text-green-400 text-center font-medium">
-            Thank you! We'll contact you soon.
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name & Email */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={handleChange}
-              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
-              required
-            />
-          </div>
-
-          {/* Phone & Date */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={handleChange}
-              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
-              required
-            />
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
-              required
-            />
-          </div>
-
-          {/* Time */}
-          <input
-            type="time"
-            name="time"
-            value={formData.time}
-            onChange={handleChange}
-            className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
-            required
-          />
-         <div className="grid md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="Country"
-              placeholder="Country"
-              value={formData.country}
-              onChange={handleChange}
-              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
-              required
-            />
-            <input
-              type="text"
-              name="city"
-              placeholder="City"
-              value={formData.city}
-              onChange={handleChange}
-              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
-              required
-            />
-          </div>
-
-          {/* Services Section (Dropdown) */}
-           <div>
-            <label
-              htmlFor="service"
-              className="text-xl font-semibold mb-2 block"
-            >
-              Select Service
-            </label>
-            <select
-              name="service"
-              id="service"
-              value={formData.service}
-              onChange={handleChange}
-              className="w-full bg-[#ffe3d9] text-black px-4 py-2 rounded outline-none"
-              required
-            >
-              <option value="">-- Select a Service --</option>
-              <option value="seo">SEO</option>
-              <option value="content">Content Marketing</option>
-              <option value="marketing">Digital Marketing</option>
-              <option value="web">Custom Web Development</option>
-              <option value="app">Mobile App Development</option>
-              <option value="ui">UI/UX Design & Branding</option>
-              <option value="all">All Services</option>
-            </select>
-          </div>
-
-
-          {/* Message */}
-          <textarea
-            name="message"
-            placeholder="Describe your requirement (optional)"
-            value={formData.message}
-            onChange={handleChange}
-            className="bg-[#ffe3d9] text-black px-4 py-3 rounded w-full resize-y min-h-[100px] outline-none"
-          />
-
-          {/* Submit */}
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] flex justify-center items-start md:items-center overflow-auto px-4 py-8">
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }} // 🆕
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.3 }}
+          className="relative w-full max-w-2xl bg-[#1e293b] text-white p-6 rounded-xl shadow-2xl border border-gray-700 mt-20 md:mt-0"
+        >
+          {/* Close Button */}
           <button
-            type="submit"
-            className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded w-full font-semibold transition"
+            onClick={onClose}
+            className="absolute top-3 right-4 text-white text-2xl font-bold hover:text-pink-400"
           >
-            Book Now
+            &times;
           </button>
-        </form>
-      </div>
+
+          <h2 className="text-2xl font-bold mb-4 text-center">
+            Get a Quote
+          </h2>
+
+          {submitted && (
+            <motion.div
+              initial={{ opacity: 0 }} // 🆕
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="mb-4 text-green-400 text-center font-medium"
+            >
+              Thank you! We'll contact you soon.
+            </motion.div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+                />
+                {errors.name && <p className="text-red-400 text-sm">{errors.name}</p>}
+              </div>
+
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+                />
+                {errors.email && <p className="text-red-400 text-sm">{errors.email}</p>}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+                />
+                {errors.phone && <p className="text-red-400 text-sm">{errors.phone}</p>}
+              </div>
+
+              <div>
+                <input
+                  type="text"
+                  name="country"
+                  placeholder="Country"
+                  value={formData.country}
+                  onChange={handleChange}
+                  className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+                />
+                {errors.country && (
+                  <p className="text-red-400 text-sm">{errors.country}</p>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="text"
+                  name="city"
+                  placeholder="City"
+                  value={formData.city}
+                  onChange={handleChange}
+                  className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full outline-none"
+                />
+                {errors.city && <p className="text-red-400 text-sm">{errors.city}</p>}
+              </div>
+
+
+              <div>
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                className="w-full bg-[#ffe3d9] text-black px-4 py-2 rounded outline-none"
+              >
+                <option value="">-- Select a Service --</option>
+                <option value="seo">SEO</option>
+                <option value="content">Content Marketing</option>
+                <option value="marketing">Digital Marketing</option>
+                <option value="web">Custom Web Development</option>
+                <option value="app">Mobile App Development</option>
+                <option value="ui">UI/UX Design & Branding</option>
+                <option value="all">All Services</option>
+              </select>
+              {errors.service && (
+                <p className="text-red-400 text-sm">{errors.service}</p>
+              )}
+            </div>
+            </div>
+
+            
+
+            <textarea
+              name="message"
+              placeholder="Describe your requirement (optional)"
+              value={formData.message}
+              onChange={handleChange}
+              className="bg-[#ffe3d9] text-black px-4 py-3 rounded w-full resize-y min-h-[100px] outline-none"
+            />
+
+            <motion.button
+              whileHover={{ scale: 1.02 }} // 🆕
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded w-full font-semibold transition"
+            >
+              Book now
+            </motion.button>
+          </form>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
 
-export default BookConsultation;
+export default BookConsultationForm;
