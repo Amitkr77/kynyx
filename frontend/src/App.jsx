@@ -8,7 +8,7 @@ import Contact from "./components/Contact";
 import Portfolio from "./components/Portfolio";
 import About from "./components/About";
 
-import Getquote from "./components/Getquote";
+// import Getquote from "./components/Getquote";
 import Footer from "./components/Footer";
 import PrivacyPolicy from "./components/Privacypolicy";
 import TermsOfService from "./components/TermsofService";
@@ -55,7 +55,7 @@ const App = () => {
           />
           <Route path="/career" element={<Career />} />
 
-          <Route path="/get-quote" element={<Getquote />} />
+          {/* <Route path="/get-quote" element={<Getquote />} /> */}
         </Routes>
         <Footer />
       </div>
