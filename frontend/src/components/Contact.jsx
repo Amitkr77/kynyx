@@ -156,7 +156,7 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`bg-orange-600 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-orange-700 transition ${
+            className={`bg-blue-600 text-white px-6 py-3 rounded flex items-center gap-2 hover:bg-blue-700 transition ${
               loading ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
