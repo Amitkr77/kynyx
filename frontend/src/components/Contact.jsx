@@ -55,7 +55,7 @@ const ContactForm = () => {
   return (
     <div className="bg-[#0f172a] text-white w-full min-h-screen py-10 px-6 md:px-20 font-sans flex items-center justify-center">
       <div className="w-full max-w-7xl grid md:grid-cols-2 gap-12 items-start">
-        {/* Address & Map */}
+        {/* Map & Address */}
         <div className="relative w-full flex justify-center">
           <img
             src="../USAMAPS.png"
@@ -64,7 +64,7 @@ const ContactForm = () => {
           />
           <div className="absolute top-[60px] left-[80px] bg-[#0f172a] text-sm text-white border border-orange-500 px-4 py-2 rounded-md">
             <p>Kynyx Solutions LLC 8,</p>
-            <p>The Green, suite A Dover, </p>
+            <p>The Green, Suite A Dover,</p>
             <p>DE 19091 US</p>
           </div>
         </div>
@@ -117,10 +117,7 @@ const ContactForm = () => {
 
           {/* Service Dropdown */}
           <div>
-            <label
-              htmlFor="service"
-              className="text-xl font-semibold mb-2 block"
-            >
+            <label htmlFor="service" className="text-xl font-semibold mb-2 block">
               Select Service
             </label>
             <select
@@ -152,7 +149,11 @@ const ContactForm = () => {
             required
           />
 
-          {/* Submit */}
+          {/* Feedback Messages */}
+          {successMsg && <p className="text-green-400">{successMsg}</p>}
+          {errorMsg && <p className="text-red-500">{errorMsg}</p>}
+
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
