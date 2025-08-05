@@ -43,21 +43,26 @@ const BookConsultationForm = ({ onClose }) => {
   ];
 
   const handleChange = (e) => {
-    const { name, value, type, checked, files } = e.target;
+  const { name, value, type, checked, files } = e.target;
 
-    if (type === "checkbox" && name === "agree") {
-      setFormData((prev) => ({ ...prev, agree: checked }));
-    } else if (type === "checkbox" && name === "services") {
-      const updatedServices = checked
-        ? [...formData.services, value]
-        : formData.services.filter((s) => s !== value);
-      setFormData((prev) => ({ ...prev, services: updatedServices }));
-    } else if (type === "file") {
-      setFormData((prev) => ({ ...prev, file: files[0] }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
+  if (type === "checkbox" && name === "agree") {
+    // Privacy policy checkbox
+    setFormData((prev) => ({ ...prev, agree: checked }));
+  } else if (type === "checkbox" && name === "services") {
+    // Multi-select services checkboxes
+    const updatedServices = checked
+      ? [...formData.services, value]
+      : formData.services.filter((s) => s !== value);
+    setFormData((prev) => ({ ...prev, services: updatedServices }));
+  } else if (type === "file") {
+    // File input
+    setFormData((prev) => ({ ...prev, file: files?.[0] || null }));
+  } else {
+    // Other input types
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }
+};
+
 
   const validate = () => {
     const newErrors = {};
@@ -270,17 +275,29 @@ const BookConsultationForm = ({ onClose }) => {
             </div>
 
             {/* File Upload */}
-            <div>
-              <label className="block mb-1 font-medium">
-                Upload reference file (optional):
-              </label>
-              <input
-                type="file"
-                name="file"
-                onChange={handleChange}
-                className="text-white"
+            <div className="flex flex-col">
+            <label className="block text-sm font-medium mb-1">
+             Upload Reference File (optional)
+           </label>
+
+           <div className="relative">
+             <input
+               type="file"
+               name="file"
+               id="file-upload"
+               onChange={handleChange}
+               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
               />
-            </div>
+    
+              <div className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full flex items-center justify-between cursor-pointer">
+               <span className="truncate">
+                 {formData.file ? formData.file.name : "No file choosen"}
+               </span>
+               <span className="text-sm  text-gray-500">Browse</span>
+             </div>
+           </div>
+          </div>
+
 
             {/* Privacy checkbox */}
             <div className="flex items-center gap-2">
