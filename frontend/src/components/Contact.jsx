@@ -73,9 +73,7 @@ const ContactForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6 w-full">
           <h2 className="text-3xl font-bold">Get in Touch</h2>
 
-          {successMsg && <p className="text-green-500">{successMsg}</p>}
-          {errorMsg && <p className="text-red-500">{errorMsg}</p>}
-
+          
           <div className="grid md:grid-cols-2 gap-4">
             <input
               type="text"
