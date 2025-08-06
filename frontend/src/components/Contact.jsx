@@ -29,7 +29,7 @@ const ContactForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/contact/send-message",
+        "https://kynyx-server-production.up.railway.app/api/contact/send-message",
         formData
       );
 
