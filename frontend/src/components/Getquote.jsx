@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BookConsultationForm = ({ onClose }) => {
@@ -42,27 +42,30 @@ const BookConsultationForm = ({ onClose }) => {
     { name: "Singapore", code: "+65" },
   ];
 
+  // 🔒 Lock scroll when modal opens
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   const handleChange = (e) => {
-  const { name, value, type, checked, files } = e.target;
+    const { name, value, type, checked, files } = e.target;
 
-  if (type === "checkbox" && name === "agree") {
-    // Privacy policy checkbox
-    setFormData((prev) => ({ ...prev, agree: checked }));
-  } else if (type === "checkbox" && name === "services") {
-    // Multi-select services checkboxes
-    const updatedServices = checked
-      ? [...formData.services, value]
-      : formData.services.filter((s) => s !== value);
-    setFormData((prev) => ({ ...prev, services: updatedServices }));
-  } else if (type === "file") {
-    // File input
-    setFormData((prev) => ({ ...prev, file: files?.[0] || null }));
-  } else {
-    // Other input types
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  }
-};
-
+    if (type === "checkbox" && name === "agree") {
+      setFormData((prev) => ({ ...prev, agree: checked }));
+    } else if (type === "checkbox" && name === "services") {
+      const updatedServices = checked
+        ? [...formData.services, value]
+        : formData.services.filter((s) => s !== value);
+      setFormData((prev) => ({ ...prev, services: updatedServices }));
+    } else if (type === "file") {
+      setFormData((prev) => ({ ...prev, file: files?.[0] || null }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
 
   const validate = () => {
     const newErrors = {};
@@ -106,7 +109,6 @@ const BookConsultationForm = ({ onClose }) => {
           transition={{ duration: 0.3 }}
           className="relative w-full max-w-2xl bg-[#1e293b] text-white p-6 rounded-xl shadow-2xl border border-gray-700 max-h-[90vh] overflow-y-auto"
         >
-          {/* Close Button */}
           <button
             onClick={onClose}
             className="absolute top-3 right-4 text-white text-2xl font-bold hover:text-pink-400"
@@ -168,7 +170,7 @@ const BookConsultationForm = ({ onClose }) => {
                 >
                   {countryCodes.map((c) => (
                     <option key={c.code} value={c.code}>
-                     ({c.code})
+                      ({c.code})
                     </option>
                   ))}
                 </select>
@@ -245,7 +247,7 @@ const BookConsultationForm = ({ onClose }) => {
               )}
             </div>
 
-            {/* Project details */}
+            {/* Project Details */}
             <textarea
               name="projectDetails"
               placeholder="Project Details (optional)"
@@ -263,7 +265,6 @@ const BookConsultationForm = ({ onClose }) => {
                 onChange={handleChange}
                 className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full"
               />
-
               <input
                 type="text"
                 name="budget"
@@ -276,30 +277,27 @@ const BookConsultationForm = ({ onClose }) => {
 
             {/* File Upload */}
             <div className="flex flex-col">
-            <label className="block text-sm font-medium mb-1">
-             Upload Reference File (optional)
-           </label>
+              <label className="block text-sm font-medium mb-1">
+                Upload Reference File (optional)
+              </label>
+              <div className="relative">
+                <input
+                  type="file"
+                  name="file"
+                  id="file-upload"
+                  onChange={handleChange}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                />
+                <div className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full flex items-center justify-between cursor-pointer">
+                  <span className="truncate">
+                    {formData.file ? formData.file.name : "No file choosen"}
+                  </span>
+                  <span className="text-sm text-gray-500">Browse</span>
+                </div>
+              </div>
+            </div>
 
-           <div className="relative">
-             <input
-               type="file"
-               name="file"
-               id="file-upload"
-               onChange={handleChange}
-               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-              />
-    
-              <div className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full flex items-center justify-between cursor-pointer">
-               <span className="truncate">
-                 {formData.file ? formData.file.name : "No file choosen"}
-               </span>
-               <span className="text-sm  text-gray-500">Browse</span>
-             </div>
-           </div>
-          </div>
-
-
-            {/* Privacy checkbox */}
+            {/* Privacy Checkbox */}
             <div className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -317,7 +315,7 @@ const BookConsultationForm = ({ onClose }) => {
             </div>
             {errors.agree && <p className="text-red-400 text-sm">{errors.agree}</p>}
 
-            {/* Submit */}
+            {/* Submit Button */}
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
