@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-scroll'; 
-import Logovideo from '/logo3.mp4';
 
 const Hero = () => (
   <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#1a242e] to-[#0f0f1a] text-white">
@@ -8,7 +7,7 @@ const Hero = () => (
     {/* Background Video */}
     <div className="absolute inset-0 z-0 pointer-events-none">
       <video
-        src={Logovideo}
+        src="/logo3.mp4"
         autoPlay
         muted
         loop
