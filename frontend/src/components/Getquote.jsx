@@ -6,13 +6,12 @@ const BookConsultationForm = ({ onClose }) => {
     name: "",
     email: "",
     phone: "",
-    countryCode: "+91",
+    countryCode: "+1", // default to +1
     company: "",
     website: "",
     services: [],
     otherService: "",
     projectDetails: "",
-    launchDate: "",
     budget: "",
     file: null,
     agree: false,
@@ -32,8 +31,8 @@ const BookConsultationForm = ({ onClose }) => {
   ];
 
   const countryCodes = [
-    { name: "India", code: "+91" },
     { name: "USA", code: "+1" },
+    { name: "India", code: "+91" },
     { name: "UK", code: "+44" },
     { name: "Australia", code: "+61" },
     { name: "Canada", code: "+1" },
@@ -42,7 +41,6 @@ const BookConsultationForm = ({ onClose }) => {
     { name: "Singapore", code: "+65" },
   ];
 
-  // 🔒 Lock scroll when modal opens
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -89,6 +87,7 @@ const BookConsultationForm = ({ onClose }) => {
 
     const fullPhone = `${formData.countryCode}${formData.phone}`;
     const payload = { ...formData, phone: fullPhone };
+    delete payload.countryCode; // remove countryCode before sending
 
     console.log("Submitted:", payload);
 
@@ -256,24 +255,15 @@ const BookConsultationForm = ({ onClose }) => {
               className="bg-[#ffe3d9] text-black px-4 py-3 rounded w-full resize-y min-h-[100px]"
             />
 
-            {/* Launch Date & Budget */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="date"
-                name="launchDate"
-                value={formData.launchDate}
-                onChange={handleChange}
-                className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full"
-              />
-              <input
-                type="text"
-                name="budget"
-                placeholder="Estimated Budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full"
-              />
-            </div>
+            {/* Budget */}
+            <input
+              type="text"
+              name="budget"
+              placeholder="Estimated Budget (in USD)"
+              value={formData.budget}
+              onChange={handleChange}
+              className="bg-[#ffe3d9] text-black px-4 py-2 rounded w-full"
+            />
 
             {/* File Upload */}
             <div className="flex flex-col">
