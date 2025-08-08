@@ -10,7 +10,7 @@ export default defineConfig({
     include: ['flowbite']
   },
   server: {
-    port: process.env.PORT || 8080,
+    port: 8080,
   }
 })
 
