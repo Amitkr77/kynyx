@@ -183,11 +183,10 @@ export default function UltimatePortfolio() {
       {/* Projects Grid */}
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-12">
-          {filtered.map((project, i) => (
+          {filtered.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
-              index={i}
               isHovered={hoveredCard === project.id}
               onHover={() => setHoveredCard(project.id)}
               onLeave={() => setHoveredCard(null)}
@@ -221,7 +220,7 @@ export default function UltimatePortfolio() {
                 suffix: "%",
               },
             ].map((stat, i) => (
-              <StatCard key={i} stat={stat} delay={i * 0.2} />
+              <StatCard key={i} stat={stat} />
             ))}
           </div>
         </div>
@@ -250,7 +249,7 @@ export default function UltimatePortfolio() {
 }
 
 // Project Card — no 3D tilt, no AnimatePresence, clean hover
-const ProjectCard = ({ project, index, isHovered, onHover, onLeave }) => {
+const ProjectCard = ({ project, isHovered, onHover, onLeave }) => {
   const [imgIndex, setImgIndex] = useState(0);
 
   useEffect(() => {
@@ -307,7 +306,7 @@ const ProjectCard = ({ project, index, isHovered, onHover, onLeave }) => {
 };
 
 // Stat Card — count-up animation on scroll (no framer-motion)
-const StatCard = ({ stat, delay }) => {
+const StatCard = ({ stat }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });

@@ -327,7 +327,6 @@ const MarkedUpPage = () => (
 /* ------------------------------------------------------------------ */
 
 const AuditServiceLanding = () => {
-  const [navOpen, setNavOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
   const [form, setForm] = useState({ name: "", email: "", website: "", message: "" });
   const [submitted, setSubmitted] = useState(false);

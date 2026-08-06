@@ -11,22 +11,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
   const [hideIcons, setHideIcons] = useState(false);
-
-  // scroll detection
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Hide floating icons when footer is visible
   useEffect(() => {

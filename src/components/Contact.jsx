@@ -202,7 +202,7 @@ export default function ContactPage() {
       });
       setTouched({});
       setTimeout(() => setSubmitted(false), 8000);
-    } catch (err) {
+    } catch {
       alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);

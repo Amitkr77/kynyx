@@ -17,7 +17,7 @@ const Login = () => {
       });
       localStorage.setItem("token", res.data.token);
       navigate("/blog");
-    } catch (err) {
+    } catch {
       setError("Invalid credentials");
     }
   };

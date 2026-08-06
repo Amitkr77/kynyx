@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
@@ -26,8 +26,6 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  const [hovered, setHovered] = useState(null);
-
   return (
     <section className="relative py-32 overflow-hidden bg-black">
       {/* Subtle Gradient Background */}
@@ -61,8 +59,6 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.2 }}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
               className="group relative"
             >
               {/* Floating Card */}

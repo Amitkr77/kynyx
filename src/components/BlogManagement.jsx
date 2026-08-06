@@ -17,7 +17,7 @@ import {
 } from "react-icons/fi";
 import debounce from "lodash/debounce";
 import { API_URL } from "../../constant";
-import BlogDetailsModal from "./BlogDetailsModal ";
+import BlogDetailsModal from "./BlogDetailsModal";
 import  BlogPreviewModal  from "./BlogPreviewModal";
 
 const STATUS_COLOR = {
@@ -108,13 +108,11 @@ const BlogManagement = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
 
-  // Auth
+  // Auth token is read once per render; the actual "not logged in" guard
+  // is applied further down, *after* every hook has been called, so hook
+  // call order stays identical across renders (React's Rules of Hooks).
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
-  if (!token) {
-    toast.error("Please log in to access blog management");
-    return null;
-  }
   const auth = { headers: { Authorization: `Bearer ${token}` } };
 
   const errMsg = (e) =>
@@ -139,8 +137,6 @@ const BlogManagement = () => {
     }, 300),
     []
   );
-
-  console.log(blogs);
 
   useEffect(() => {
     fetchBlogs({ page, limit, ...filters });
@@ -336,16 +332,42 @@ const BlogManagement = () => {
     return range;
   }, [page, pagination.totalPages]);
 
+  if (!token) {
+    toast.error("Please log in to access blog management");
+    return null;
+  }
+
   return (
     <>
       <ToastContainer position="top-right" autoClose={3000} />
       <div className="min-h-screen bg-gray-100 sm:flex mt-10 pt-2 px-10">
+        {/* Backdrop for the mobile sidebar */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 z-30 bg-black/40 lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Sidebar Form */}
-        <div>
+        <div
+          className={`fixed inset-y-0 left-0 z-40 w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-300 lg:static lg:z-auto lg:w-96 lg:shadow-none lg:translate-x-0 ${
+            sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
             <h2 className="text-lg font-semibold text-gray-800">
               {editingId ? "Edit Blog" : "New Blog"}
             </h2>
+            <button
+              type="button"
+              onClick={() => setSidebarOpen(false)}
+              className="lg:hidden text-gray-500 hover:text-gray-800"
+              aria-label="Close sidebar"
+            >
+              <FiX size={22} />
+            </button>
           </div>
           <form
             onSubmit={submit}
